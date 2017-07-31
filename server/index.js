@@ -2,7 +2,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
 const passport = require('passport');
 
 // Connect to mongoDB
@@ -27,6 +26,9 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 // Routes
+const users = require('./routes/users');
+app.get('/users', users);
+
 app.get('*', (req, res) => {
   res.send('hello');
 });
