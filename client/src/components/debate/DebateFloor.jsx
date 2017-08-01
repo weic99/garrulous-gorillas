@@ -13,10 +13,12 @@ class DebateFloor extends React.Component {
   }
 
   componentWillMount() {
+
     
   }
 
   componentDidMount() {
+    // Query Database
 
   }
 
