@@ -8,6 +8,7 @@ import {
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 
+import DebateFloor from './debate/DebateFloor.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class App extends React.Component {
         <Nav />
         <h1>TEST APP</h1>
         <Main />
+        <DebateFloor />
+
       </div>)
   }
 }

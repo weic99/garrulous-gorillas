@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 class DebateFloor extends React.Component {
   constructor() {
     super();
@@ -9,8 +12,10 @@ class DebateFloor extends React.Component {
 
   render() {
     return (
-
-    )
+      <div>
+        <div>Topic</div>
+      </div>
+      )
   }
 }
   export default DebateFloor;
