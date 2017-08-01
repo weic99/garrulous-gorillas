@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
+import DebateFloor from './components/debate/DebateFloor.jsx'
 
 
 class App extends React.Component {
@@ -18,7 +19,6 @@ class App extends React.Component {
 
   componentDidMount() {
 
-
   }
 
   render() {
@@ -27,6 +27,9 @@ class App extends React.Component {
         <Nav />
         <h1>TEST APP</h1>
         <Main />
+        <div>Nav Goes Here</div>
+        <DebateFloor />
+        <div>Chat Goes Here</div>
       </div>)
   }
 }
