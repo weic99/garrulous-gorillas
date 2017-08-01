@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Position from 'Position';
-
 class DebateFloor extends React.Component {
   constructor() {
     super();
