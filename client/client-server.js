@@ -9,15 +9,16 @@ app.use(bodyParser());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Routes
-const users = require('./src/routes/users');
-app.use('/users', users);
+// const users = require('./src/routes/users');
+// app.use('/users', users);
 
-app.get('/test', function(req, res) {
-  res.send('TEST!');
-});
+// app.get('/test', function(req, res) {
+//   res.send('TEST!');
+// });
 
 app.get('*', function(req, res) {
-  res.send('You shouldn\'t be here...');
+  res.sendFile('index.html', { root: __dirname + '/public'});
+  //res.send('You shouldn\'t be here...');
 });
 
 app.listen(8080, function() {
