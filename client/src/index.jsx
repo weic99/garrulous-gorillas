@@ -5,6 +5,8 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import Nav from './components/Nav.jsx';
+import Main from './components/Main.jsx';
 
 
 class App extends React.Component {
@@ -22,7 +24,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Nav />
         <h1>TEST APP</h1>
+        <Main />
       </div>)
   }
 }
