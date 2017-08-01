@@ -7,8 +7,8 @@ import {
 } from 'react-router-dom'
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
-import DebateFloor from './components/debate/DebateFloor.jsx'
-
+import DebateFloor from './components/debate/DebateFloor.jsx';
+import Login from './components/login/login.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +30,9 @@ class App extends React.Component {
         <div>Nav Goes Here</div>
         <DebateFloor />
         <div>Chat Goes Here</div>
+        
+        <div>Sample login</div>
+        <Login />
       </div>)
   }
 }
