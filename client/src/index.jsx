@@ -9,6 +9,7 @@ import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
+import SignUp from './components/signup/signup.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,8 +32,12 @@ class App extends React.Component {
         <DebateFloor />
         <div>Chat Goes Here</div>
         
-        <div>Sample login</div>
+        <div>Sample Login</div>
         <Login />
+        
+        <div>Sample Sign up</div>
+        <SignUp />
+              
       </div>)
   }
 }
