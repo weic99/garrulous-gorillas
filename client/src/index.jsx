@@ -5,7 +5,11 @@ import {
   Route,
   Link
 } from 'react-router-dom'
+import Nav from './components/Nav.jsx';
+import Main from './components/Main.jsx';
+
 import DebateFloor from './components/debate/DebateFloor.jsx'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -21,9 +25,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Nav />
+        <h1>TEST APP</h1>
+        <Main />
         <div>Nav Goes Here</div>
         <DebateFloor />
-        <div>Chat Goes Here<div>
+        <div>Chat Goes Here</div>
       </div>)
   }
 }

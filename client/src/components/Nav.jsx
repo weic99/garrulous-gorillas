@@ -1,14 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-class Position extends React.Component {
+class Nav extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
   }
-
 
   componentDidMount() {
 
@@ -17,10 +13,11 @@ class Position extends React.Component {
   render() {
     return (
       <div>
-        One side
+      <li>Login/Signup</li>
+      <li>Current Debates</li>
       </div>
-      )
+    )
   }
 }
 
-export default Position;
+export default Nav;
