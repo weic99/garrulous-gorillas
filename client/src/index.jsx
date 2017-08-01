@@ -29,9 +29,7 @@ class App extends React.Component {
         <Main />
         <div>Nav Goes Here</div>
         <DebateFloor />
-        <div>Nav Goes Here</div>
-        <DebateFloor />
-        <div>Chat Goes Here<div>
+        <div>Chat Goes Here</div>
       </div>)
   }
 }

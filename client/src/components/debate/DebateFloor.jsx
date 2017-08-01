@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Position from 'Position';
+import Position from './Position.jsx';
 
 class DebateFloor extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
   }
   componentDidMount() {
