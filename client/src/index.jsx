@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 
 import Nav from './components/Nav.jsx';
@@ -29,20 +30,25 @@ class App extends React.Component {
       <div>
         <Nav />
         <h1>TEST APP main routing is completed</h1>
-        <Main />
-        <div>Nav Goes Here</div>
-        <DebateFloor />
-        <div>Chat Goes Here</div>
-        
-        <div>Sample Login</div>
-        <Login />
-        
-        <div>Sample Sign up</div>
-        <SignUp />
-              
+        <Switch>
+          <Route path="/login" component={Login}/>
+          <Route path="/signup" component={SignUp}/>
+          <Route path="/" component={Main}/>
+          <Main />
+          <DebateFloor />
+          <div>Chat Goes Here</div>
+          
+          <div>Sample Login</div>
+          <Login />
+          
+          <div>Sample Sign up</div>
+          <SignUp />
+                
 
-        <h1>TEST APP</h1>
-        <Chatview />
+          <h1>TEST APP</h1>
+          <Chatview />
+        </Switch>
+
 
       </div>)
   }
