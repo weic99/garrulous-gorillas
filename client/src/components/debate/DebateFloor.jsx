@@ -7,14 +7,21 @@ class DebateFloor extends React.Component {
     super(props);
 
   }
-  componentDidMount() {
   
+  componentWillMount() {
+    
+  }
+
+  componentDidMount() {
+
   }
 
   render() {
     return (
       <div>
         <div>Topic</div>
+        <Position position="pro" />
+        <Position position="con" />
       </div>
       )
   }
