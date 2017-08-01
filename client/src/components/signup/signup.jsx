@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, ControlLabel, Form, FormControl, FormGroup } from 'react-bootstrap';
 
-class Login extends React.Component {
+class SignUp extends React.Component {
   constructor() {
     super();
     this.handleSubmit = (event) => {
@@ -26,7 +26,7 @@ class Login extends React.Component {
                 <ControlLabel>Password </ControlLabel>
                 <FormControl type="password" ref="password" onChange={this.handleChange} placeholder="Password" />
             </FormGroup>
-            <Button onClick={(event) => this.handleSubmit(event)}>Login</Button>
+            <Button onClick={(event) => this.handleSubmit(event)}>Sign Up</Button>
             {errorMessage &&
             <p style={{color:'red'}}>{errorMessage}</p>
             }
@@ -36,4 +36,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default SignUp;

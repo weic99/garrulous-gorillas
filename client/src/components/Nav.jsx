@@ -20,10 +20,10 @@ class Nav extends React.Component {
   render() {
     return (
       <div>
-      <Link to='/home'>Home</Link>
-      <Link to='/debates'>All Debates</Link>
-      <Link to='/login'>Login</Link>
-      <Link to='/signup'>Signup</Link>
+        <Link to='/home'>Home</Link>
+        <Link to='/debates'>All Debates</Link>
+        <Link to='/login'>Login</Link>
+        <Link to='/signup'>Signup</Link>
       </div>
     )
   }

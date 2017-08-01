@@ -5,10 +5,12 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
+import SignUp from './components/signup/signup.jsx';
 import Chatview from './components/chatview/chatview.jsx';
 
 class App extends React.Component {
@@ -32,10 +34,16 @@ class App extends React.Component {
         <DebateFloor />
         <div>Chat Goes Here</div>
         
-        <div>Sample login</div>
+        <div>Sample Login</div>
         <Login />
+        
+        <div>Sample Sign up</div>
+        <SignUp />
+              
+
         <h1>TEST APP</h1>
         <Chatview />
+
       </div>)
   }
 }
