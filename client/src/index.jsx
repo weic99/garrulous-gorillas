@@ -4,12 +4,11 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
-} from 'react-router-dom';
 import Chatview from './components/chatview/chatview.jsx';
 
 class App extends React.Component {
