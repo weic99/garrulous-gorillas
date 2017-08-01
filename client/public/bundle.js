@@ -11232,6 +11232,10 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(196);
 
+var _DebateFloor = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./debate/DebateFloor.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _DebateFloor2 = _interopRequireDefault(_DebateFloor);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11265,7 +11269,8 @@ var App = function (_React$Component) {
           'h1',
           null,
           'TEST APP'
-        )
+        ),
+        _react2.default.createElement(_DebateFloor2.default, null)
       );
     }
   }]);

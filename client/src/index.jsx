@@ -6,6 +6,7 @@ import {
   Link
 } from 'react-router-dom'
 
+import DebateFloor from './debate/DebateFloor.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>TEST APP</h1>
+        <DebateFloor />
+
       </div>)
   }
 }
