@@ -13,5 +13,6 @@ class DebateFloor extends React.Component {
     )
   }
 }
-  export default DebateFloor;
+  
+export default DebateFloor;
 
