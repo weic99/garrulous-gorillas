@@ -1,14 +1,18 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Button, ControlLabel, Form, FormControl, FormGroup } from 'react-bootstrap';
 
 class SignUp extends React.Component {
   constructor() {
     super();
     this.handleSubmit = (event) => {
-        const username = findDOMNode(this.refs.username)
-        const password = findDOMNode(this.refs.password)
-        const creds = { username: username.value.trim(), password: password.value.trim() }
-        this.props.onLoginClick(creds)
+      const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
+      const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
+      const creds = { username: username, password: password };
+      //this.props.onLoginClick(creds)
+      console.log('SIGN UP');
+      console.log('username', username);
+      console.log('password', password);
     }
   }
   
