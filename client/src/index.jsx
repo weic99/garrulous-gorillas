@@ -9,6 +9,8 @@ import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
+} from 'react-router-dom';
+import Chatview from './components/chatview/chatview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +35,8 @@ class App extends React.Component {
         
         <div>Sample login</div>
         <Login />
+        <h1>TEST APP</h1>
+        <Chatview />
       </div>)
   }
 }
