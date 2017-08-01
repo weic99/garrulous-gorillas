@@ -9,8 +9,6 @@ import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx'
 
-import DebateFloor from './components/debate/DebateFloor.jsx'
-
 
 class App extends React.Component {
   constructor(props) {
