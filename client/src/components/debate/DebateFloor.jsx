@@ -5,9 +5,13 @@ import Position from './Position.jsx';
 class DebateFloor extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      argumentsPro: ['These are my feeeeeeeeeelings', 'Here are moreeeee feeeeelings', 'I LOVEEEEEE IT'],
+      argumentsCon: ['You are wrong', 'OBJECTTTTIONNNNNNNNN', 'I HATEEEEEEEE THATTTTTT'],
+    }
 
   }
-  
+
   componentWillMount() {
     
   }
@@ -20,8 +24,8 @@ class DebateFloor extends React.Component {
     return (
       <div>
         <div>Topic</div>
-        <Position position="pro" />
-        <Position position="con" />
+        <Position position="Pro" arguments={this.state.argumentsPro} points="10" />
+        <Position position="Con" arguments={this.state.argumentsCon} points="7" />
       </div>
       )
   }
