@@ -5,8 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-
-import DebateFloor from './debate/DebateFloor.jsx'
+import DebateFloor from './components/debate/DebateFloor.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -17,15 +16,14 @@ class App extends React.Component {
 
   componentDidMount() {
 
-
   }
 
   render() {
     return (
       <div>
-        <h1>TEST APP</h1>
+        <div>Nav Goes Here</div>
         <DebateFloor />
-
+        <div>Chat Goes Here<div>
       </div>)
   }
 }
