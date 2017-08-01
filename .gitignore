@@ -63,3 +63,4 @@ typings/
 .DS_Store
 client/public/bundle.js
 client/src/components/debate-floor/DebateFloor.jsx
+client/public/bundle.js
