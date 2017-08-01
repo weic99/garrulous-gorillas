@@ -21,6 +21,11 @@ app.get('*', function(req, res) {
   //res.send('You shouldn\'t be here...');
 });
 
+//test work for sockets
+app.get('/chatview', function(req, res) {
+	res.send('/Debatechat');
+})
+
 app.listen(8080, function() {
   console.log('listening on port 8080!')
 });

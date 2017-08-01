@@ -4,12 +4,14 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+
 import Nav from './components/Nav.jsx';
 import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
 import SignUp from './components/signup/signup.jsx';
+import Chatview from './components/chatview/chatview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +40,10 @@ class App extends React.Component {
         <div>Sample Sign up</div>
         <SignUp />
               
+
+        <h1>TEST APP</h1>
+        <Chatview />
+
       </div>)
   }
 }
