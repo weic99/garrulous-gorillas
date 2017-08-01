@@ -33,13 +33,6 @@ class App extends React.Component {
         <div>Nav Goes Here</div>
         <DebateFloor />
         <div>Chat Goes Here</div>
-        
-        <div>Sample Login</div>
-        <Login />
-        
-        <div>Sample Sign up</div>
-        <SignUp />
-              
 
         <h1>TEST APP</h1>
         <Chatview />

@@ -4,12 +4,23 @@ import { Button, ControlLabel, Form, FormControl, FormGroup } from 'react-bootst
 class Login extends React.Component {
   constructor() {
     super();
+    this.state = {
+      showModal: false
+    }
     this.handleSubmit = (event) => {
         const username = findDOMNode(this.refs.username)
         const password = findDOMNode(this.refs.password)
         const creds = { username: username.value.trim(), password: password.value.trim() }
         this.props.onLoginClick(creds)
     }
+  }
+  
+  close() {
+    this.setState({ showModal: false });
+  }
+
+  open() {
+    this.setState({ showModal: true });
   }
   
   render() {
