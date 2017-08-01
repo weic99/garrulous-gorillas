@@ -14,12 +14,14 @@ class Chatview extends React.Component {
 
  render () {
   return (
-      <div>
-        <p>Hello World!!</p>
-      </div> 
-    )
- }
+        <div>
+          <p>Hello World!!</p>
+        </div> 
+      )
+   }
 }
+
+
 
 
 // $(function() {
@@ -304,4 +306,4 @@ class Chatview extends React.Component {
 //   });
 // });
 
-// export default Chatview;
+export default Chatview;

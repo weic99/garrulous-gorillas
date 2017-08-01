@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+import Chatview from './components/chatview/chatview.jsx';
 
 
 class App extends React.Component {
