@@ -34,6 +34,7 @@ class App extends React.Component {
         <h1 >Garrulous - Where Walter Is King</h1>
         <Main />
         <div>Nav Goes Here</div>
+
         <DebateFloor />
         <div>Chat Goes Here</div>
 
