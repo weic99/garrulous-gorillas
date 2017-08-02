@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Main from './Main.jsx';
 import Login from './login/login.jsx';
+import SignUp from './signup/signup.jsx';
 
 class Nav extends React.Component {
 
