@@ -33,11 +33,13 @@ class App extends React.Component {
         <Nav />
         <h1 >Garrulous - Where Walter Is King</h1>
         <Main />
+        <div>Nav Goes Here</div>
         <DebateFloor />
         <div>Chat Goes Here</div>
 
         <h1>Spectators</h1>
         <Chatview />
+
         
         <h1>For</h1>
         <Forview />
@@ -46,11 +48,13 @@ class App extends React.Component {
         <Againstview />
 
 
+
         <Switch>
           <Route path="/login" component={Login}/>
-          <Route path="/signup" component={DebateFloor}/>
+          <Route path="/signup" component={SignUp}/>
           <Route path="/" component={Main}/>
-          
+          <Main />
+          <DebateFloor />
           <div>Chat Goes Here</div>
           
           <div>Sample Login</div>
