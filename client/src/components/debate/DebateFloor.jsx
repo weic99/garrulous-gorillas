@@ -50,6 +50,8 @@ class DebateFloor extends React.Component {
           <div>Topic</div>
           {this.state.positions.map((position, index) => <Position handleVote={this.handleVote} key={index} position={position} />)}
   
+          <Position position="Pro" arguments={this.state.argumentsPro} points={this.state.votesPro} />
+          <Position position="Con" arguments={this.state.argumentsCon} points={this.state.votesCon} />
         </div>
       </div>
       )
