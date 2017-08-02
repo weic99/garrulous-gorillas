@@ -33,7 +33,6 @@ class App extends React.Component {
         <Nav />
         <h1>TEST APP main routing is completed</h1>
         <Main />
-        <div>Nav Goes Here</div>
         <DebateFloor />
         <div>Chat Goes Here</div>
 
