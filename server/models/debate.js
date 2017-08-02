@@ -9,9 +9,9 @@ const DebateSchema = mongoose.Schema({
 const Debate = module.exports = mongoose.model('Debate', DebateSchema);
 
 module.exports.addDebate = (debate, callback) => {
-	debate.save(callback);
+  debate.save(callback);
 };
 
 mode.exports.getAllActiveDebates = (callback) => {
-	
+  
 };
