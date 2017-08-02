@@ -33,9 +33,9 @@ class Position extends React.Component {
 =======
 const Position = (props) => (
   <div className='col-sm-6'>
-    <h4>{props.position}</h4>
-    <div>{props.points} Points</div>
-    {props.arguments.map( (argument, i) => <Argument handleVote={props.handleVote} argument={argument} key={i}/>)}
+    <h4>{props.position.position}</h4>
+    <div>{props.position.points} Points</div>
+    {props.position.arguments.map( (argument, i) => <Argument handleVote={props.handleVote} argument={argument} key={i}/>)}
   </div>
   )
 >>>>>>> index
