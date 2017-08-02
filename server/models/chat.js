@@ -10,3 +10,7 @@ const ChatLogSchema = mongoose.Schema({
 });
 
 const ChatLog = module.exports = mongoose.model('ChatLog', ChatLogSchema);
+
+module.exports.addChat = (chat, callback) => {
+  chat.save(callback);
+}

@@ -39,20 +39,51 @@ const server = app.listen(port, () => {
   console.log('Server started on port ', port);
 });
 
-// Start socket listerner
-const io = socket(server);
-let connectionsCount = 0;
+// Start socket listerner for spectators
+var io = socket(server);
+spectator = io.of('/spectator');
+pro = io.of('/for');
+against = io.of('/against');
+let spectatorCount = 0;
+let forCount = 0;
+let againstCount = 0;
 
-io.on('connection', (socket) => {
-  console.log('New socket connected:', ++connectionsCount, socket.id);
+spectator.on('connection', (socket) => {
+  console.log('New spectator connected:', ++spectatorCount, socket.id);
   
   socket.on('disconnect', () => {
-    console.log('Socket disconnected', --connectionsCount);
+    console.log('spectator disconnected', --spectatorCount);
   });
   
   socket.on('chat', (data) => {
     console.log(`Received message: ${data.message} from ${data.username}`);
-    io.sockets.emit('chat', data);
+    spectator.emit('chat', data);
+  });
+});
+
+pro.on('connection', (socket) => {
+  console.log('New spectator connected:', ++forCount, socket.id);
+  
+  socket.on('disconnect', () => {
+    console.log('spectator disconnected', --forCount);
+  });
+  
+  socket.on('chat', (data) => {
+    console.log(`Received message: ${data.message} from ${data.username}`);
+    pro.emit('chat', data);
+  });
+});
+
+against.on('connection', (socket) => {
+  console.log('New spectator connected:', ++againstCount, socket.id);
+  
+  socket.on('disconnect', () => {
+    console.log('spectator disconnected', --againstCount);
+  });
+  
+  socket.on('chat', (data) => {
+    console.log(`Received message: ${data.message} from ${data.username}`);
+    against.emit('chat', data);
   });
 });
 

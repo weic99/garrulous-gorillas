@@ -10,7 +10,6 @@ class Login extends React.Component {
       const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
       const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
       const creds = { username: username, password: password };
-      //this.props.onLoginClick(creds)
 
       console.log('LOG IN with creds', creds);
 
@@ -25,6 +24,7 @@ class Login extends React.Component {
         console.log('[Login] ERROR:', error);
         // TODO: show user error message in DOM
       });
+
     };
   }
 
