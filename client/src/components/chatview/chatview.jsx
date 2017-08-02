@@ -10,22 +10,33 @@ export default class Chatview extends React.Component {
     this.state = { 
       chat: {}
     }
+    
     this.handleSubmit = (event) => {
       const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
       const message = ReactDOM.findDOMNode(this.refs.message).value.trim();
-      console.log('Send message');
-      console.log('username', username);
-      console.log('message', message);
+      // console.log('Send message');
+      // console.log('username', username);
+      // console.log('message', message);
       socket.emit('chat', {
         username: username,
         message: message
       });
     };
+    
+    // Listen for chats
+    socket.on('chat', (data) => {
+      const output = ReactDOM.findDOMNode(this.refs.output);
+      output.innerHTML += `<p><strong>${data.username}:</strong>${data.message}</p>`;
+      output.lastChild.scrollIntoView();
+    });
   }
 
  render () {
   return (
       <div>
+        <div id="chat-window">
+          <div id="chat-window-output" ref="output"></div>
+        </div>
         <ul className="pages">
           <li className="chat page">
             <div className="chatArea">
