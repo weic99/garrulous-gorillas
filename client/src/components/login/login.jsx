@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ControlLabel, Form, FormControl, FormGroup } from 'react-bootstrap';
+import axios from 'axios';
 
 class Login extends React.Component {
   constructor() {
@@ -10,9 +11,20 @@ class Login extends React.Component {
       const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
       const creds = { username: username, password: password };
       //this.props.onLoginClick(creds)
-      console.log('LOG IN');
-      console.log('username', username);
-      console.log('password', password);
+
+      console.log('LOG IN with creds', creds);
+
+      axios.post('http://localhost:3000/users/login', creds)
+      .then(response => {
+        console.log('[Login] Success Response:', response);
+        ReactDOM.findDOMNode(this.refs.username).value = '';
+        ReactDOM.findDOMNode(this.refs.password).value = '';
+        // TODO: show the next view
+      })
+      .catch(error => {
+        console.log('[Login] ERROR:', error);
+        // TODO: show user error message in DOM
+      });
     };
   }
 
