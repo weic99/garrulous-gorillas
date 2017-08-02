@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Argument from './Argument.jsx'
 const socket = require('socket.io-client')('http://localhost:3000');
 
+<<<<<<< HEAD
 class Position extends React.Component {
   constructor(props) {
     super(props)
@@ -29,5 +30,14 @@ class Position extends React.Component {
     )
   }
 }
+=======
+const Position = (props) => (
+  <div className='col-sm-6'>
+    <h4>{props.position}</h4>
+    <div>{props.points} Points</div>
+    {props.arguments.map( (argument, i) => <Argument handleVote={props.handleVote} argument={argument} key={i}/>)}
+  </div>
+  )
+>>>>>>> index
 
 export default Position;

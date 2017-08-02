@@ -4,8 +4,8 @@ import { ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 
 const Argument = (props) => (
   <div>
-    <form>
-      <input type="checkbox" />
+    <form >
+      <input onChange={props.handleVote()} type="checkbox" />
         {props.argument}  
     </form>
   </div>

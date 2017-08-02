@@ -32,7 +32,6 @@ class DebateFloor extends React.Component {
   handleVote(event) {
     // When a box is checked, update the value of values by 1, to the proper debate ID and proper position
     console.log('clicked');
-
   }
   componentWillMount() {
 

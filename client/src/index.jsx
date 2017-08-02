@@ -45,11 +45,12 @@ class App extends React.Component {
         <h1>Against</h1>
         <Againstview />
 
+
         <Switch>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={DebateFloor}/>
           <Route path="/" component={Main}/>
-          <DebateFloor />
+          
           <div>Chat Goes Here</div>
           
           <div>Sample Login</div>
