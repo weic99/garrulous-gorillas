@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const socket = require('socket.io');
 
 // Connect to mongoDB
 const config = require('./config/mongo');
@@ -34,6 +35,26 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log('Server started on port ', port);
 });
+
+// Start socket listerner
+const io = socket(server);
+let connectionsCount = 0;
+
+io.on('connection', (socket) => {
+  console.log('New socket connected:', ++connectionsCount, socket.id);
+  
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected', --connectionsCount);
+  });
+  
+  socket.on('chat', (data) => {
+    io.sockets.emit('chat', data);
+  });
+});
+
+
+
+
