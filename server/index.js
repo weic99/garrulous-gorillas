@@ -39,8 +39,9 @@ const server = app.listen(port, () => {
   console.log('Server started on port ', port);
 });
 
-// Start socket listerner
-const io = socket(server);
+// Start socket listerner for spectators
+var io = socket(server);
+io = io.of('/spectator');
 let connectionsCount = 0;
 
 io.on('connection', (socket) => {
@@ -52,7 +53,7 @@ io.on('connection', (socket) => {
   
   socket.on('chat', (data) => {
     console.log(`Received message: ${data.message} from ${data.username}`);
-    io.sockets.emit('chat', data);
+    io.emit('chat', data);
   });
 });
 

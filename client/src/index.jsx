@@ -13,6 +13,8 @@ import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
 import SignUp from './components/signup/signup.jsx';
 import Chatview from './components/chatview/chatview.jsx';
+import Forview from './components/chatview/forview.jsx';
+import Againstview from './components/chatview/againstview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -53,8 +55,14 @@ class App extends React.Component {
           <SignUp />
                 
 
-          <h1>TEST APP</h1>
+          <h1>Spectators</h1>
           <Chatview />
+          
+          <h1>For</h1>
+          <Forview />
+          
+          <h1>Against</h1>
+          <Againstview />
         </Switch>
 
       </div>)

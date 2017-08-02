@@ -10,9 +10,9 @@ class Login extends React.Component {
       const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
       const creds = { username: username, password: password };
       //this.props.onLoginClick(creds)
-      console.log('LOG IN');
-      console.log('username', username);
-      console.log('password', password);
+      // console.log('LOG IN');
+      // console.log('username', username);
+      // console.log('password', password);
     };
   }
 

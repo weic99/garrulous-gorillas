@@ -2,9 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ControlLabel, Form, FormControl, FormGroup } from 'react-bootstrap';
-const socket = require('socket.io-client')('http://localhost:3000/spectator');
+const socket = require('socket.io-client')('http://localhost:3000/against');
 
-export default class Chatview extends React.Component {
+export default class Againstview extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
