@@ -7,11 +7,12 @@ class DebateFloor extends React.Component {
     super(props);
     this.state = {
       // These should be populated by the DB, or sockets for each specific debate
+      topic: "",
+      winner: "",
       argumentsFor: ['These are my feeeeeeeeeelings', 'Here are moreeeee feeeeelings', 'I LOVEEEEEE IT', 'Clearly you are mistake. I CANNOT BELIEVE THIS'],
       argumentsAgainst: ['You are wrong', 'OBJECTTTTIONNNNNNNNN', 'I HATEEEEEEEE THATTTTTT', 'We do not believe in such savage ideas'],
       votesFor: 5,
       votesAgainst: 11,
-      winner: "",
       positions: [
         {
           position: 'For',
@@ -31,8 +32,12 @@ class DebateFloor extends React.Component {
 
   handleVote(event) {
     // When a box is checked, update the value of values by 1, to the proper debate ID and proper position
-    console.log('clicked');
-
+    let checked = event.target.checked
+    if (!checked) {
+      console.log('already checked!')
+    } else {
+      console.log('checking box')
+    }
   }
   componentWillMount() {
 

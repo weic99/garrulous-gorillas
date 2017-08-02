@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Argument from './Argument.jsx'
-const socket = require('socket.io-client')('http://localhost:3000');
+const socket = require('socket.io-client')('http://localhost:3000/for');
 
 class Position extends React.Component {
   constructor(props) {
@@ -10,13 +10,10 @@ class Position extends React.Component {
       arguments: []
     }
     socket.on('chat', (data) => {
-      if (data.message.substring(0, 6) === '-agree') {
+      if (data.message.substring(0, 6) === '#agree') {
         this.addArguments(data.message.substring(7));
       }  
       console.log('ADDED MESSAGE')
-      // const output = ReactDOM.findDOMNode(this.refs.output);
-      // output.innerHTML += `<p><strong>${data.username}:</strong>${data.message}</p>`;
-      // output.lastChild.scrollIntoView();
     });
     this.addArguments.bind(this);
   }
