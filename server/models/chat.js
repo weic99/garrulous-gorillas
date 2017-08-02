@@ -6,7 +6,7 @@ const ChatLogSchema = mongoose.Schema({
   side: String,
   votes: Number,
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  debate: { type: Schema.Types.ObjectId, ref: 'User' }
+  debate: { type: Schema.Types.ObjectId, ref: 'Debate' }
 });
 
 const ChatLog = module.exports = mongoose.model('ChatLog', ChatLogSchema);

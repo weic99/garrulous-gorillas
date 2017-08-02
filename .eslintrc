@@ -1,4 +1,6 @@
 {
   "extends": "airbnb",
-  "validateLineBreaks": null
+  rules:{
+    "linebreak-style": 0
+  }
 }
