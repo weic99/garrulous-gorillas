@@ -31,7 +31,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav />
-        <h1>TEST APP main routing is completed</h1>
+        <h1 >Garrulous - Where Walter Is King</h1>
         <Main />
         <DebateFloor />
         <div>Chat Goes Here</div>
