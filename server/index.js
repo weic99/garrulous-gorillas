@@ -51,6 +51,7 @@ io.on('connection', (socket) => {
   });
   
   socket.on('chat', (data) => {
+    console.log(`Received message: ${data.message} from ${data.username}`);
     io.sockets.emit('chat', data);
   });
 });
