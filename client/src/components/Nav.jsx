@@ -21,7 +21,7 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div className="navbar navbar-inverse navbar-fixed-top">
+      <div className="navbar navbar-inverse">
         <div className="container">
           <div className="navbar-header" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">

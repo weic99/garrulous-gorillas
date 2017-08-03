@@ -47,7 +47,7 @@ router.post('/login', (req, res) => {
           let token = jwt.sign({
             id: user._id,
             username: user.username
-          }, config.secret);
+          }, config.secret, { expiresIn: '1h' });
           res.json({
             success: true,
             token: token
