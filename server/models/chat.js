@@ -6,11 +6,11 @@ const ChatLogSchema = mongoose.Schema({
   side: String,
   votes: Number,
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  debate: { type: Schema.Types.ObjectId, ref: 'Debate' }
+  activeDebate: { type: Schema.Types.ObjectId, ref: 'Debate' }
 });
 
 const ChatLog = module.exports = mongoose.model('ChatLog', ChatLogSchema);
 
 module.exports.addChat = (chat, callback) => {
   chat.save(callback);
-}
+};

@@ -2,26 +2,25 @@ const express = require('express');
 const router = express.Router();
 
 const ActiveDebate = require('../models/activeDebate');
+const DebateArg = require('../models/debateArg');
 
 router.post('/api/post', (req, res) => {
 
-  debateId = req.body.debate || null;
-
   const newDebate = new ActiveDebate({
-    debate: debateId,
-    topic: req.body.topic,
+    topic: req.body.topic
   });
 
-  ActiveDebate.addActiveDebate(newDebate, (err, data) => {
+  // Save into activeDebate table only, for creating a new debate topic
+  ActiveDebate.add(newDebate, (err, data) => {
     if (err) {
       res.json({
         success: false,
-        msg: `Failed to add new debate: ${newDebate.topic}`
+        msg: `Failed to add activedebate: ${newDebate.topic}`
       });
     } else if (data) {
       res.json({
         success: true,
-        msg: `New debate ${newDebate.topic} is added`
+        msg: `New activedebate ${newDebate.topic} is added`
       });
     }
   });
@@ -29,7 +28,7 @@ router.post('/api/post', (req, res) => {
 
 router.get('/api/get', (req, res) => {
 
-  ActiveDebate.getAllActiveDebates((err, data) => {
+  ActiveDebate.getAll((err, data) => {
     if (err) {
       res.json({
         success: false,
@@ -46,5 +45,58 @@ router.get('/api/get', (req, res) => {
   });
 });
 
+router.post('/api/postArg', (req, res) => {
+
+  const newArgument = new DebateArg({
+    body: req.body.argumentBody,
+    votes: 0,
+    debateTopic: req.body.topic,
+    debateSide: req.body.side
+  });
+
+  DebateArg.addArgument(newArgument, (err, data) => {
+    if (err) {
+      res.json({
+        success: false,
+      });
+    } else if (data) {
+      console.log('POST arguments success!', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    }
+  });
+
+  // TODO later: supposed to add to activeDebate's debateArgs array
+  // ActiveDebate.addToArgumentToDebate(newArgument, (err, data) => {
+  // });
+
+});
+
+router.get('/api/getArgs', (req, res) => {
+  console.log('ATTEMPT get args', req.query);
+
+  const topic = req.query.topic;
+  const side = req.query.side;
+
+  DebateArg.getArgsByTopicAndSide(topic, side, (err, data) => {
+    if (err) {
+      res.json({
+        success: false
+      });
+    } else if (data) {
+      console.log('GET arguments success!', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    }
+  });
+});
+
+router.get('/api/getVotes', (req, res) => {
+
+});
 
 module.exports = router;
