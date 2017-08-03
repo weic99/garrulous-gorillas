@@ -1,5 +1,12 @@
 import React from 'react';
-import DebateItem from './DebateItem.jsx'
+import DebateItem from './DebateItem.jsx';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
+import DebateFloor from './debate/DebateFloor.jsx';
 
 import axios from 'axios';
 
@@ -34,8 +41,11 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <h4>List of Debates</h4>
-        { this.state.debates.map( (item, i) => <DebateItem debate = {item} key= {i}/> )}
+      <h4>List of Debates</h4>
+      { this.state.debates.map( (item, i) => <DebateItem debate = {item} key= {i}/> )}
+      <Switch>
+        <Route path='/debates/gun-control-in-america' component={DebateFloor} />
+      </Switch>
       </div>
     )
   }
