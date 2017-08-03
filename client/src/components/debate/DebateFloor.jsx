@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Position from './Position.jsx';
 import axios from 'axios';
+import ChatView from '../chatview/chatview.jsx'
 
 class DebateFloor extends React.Component {
   constructor(props) {
@@ -64,11 +65,15 @@ class DebateFloor extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="Row">
-          <div>Topic</div>
-  
-          <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} />
-          <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} />
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">Topic</div>
+        </div>
+          <div className="row">
+            <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} />
+            <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} />
+          </div>
+        <div>
+          <ChatView />
         </div>
       </div>
       )
