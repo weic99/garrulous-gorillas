@@ -26,6 +26,7 @@ class Login extends React.Component {
         ReactDOM.findDOMNode(this.refs.password).value = '';
         
         this.setState({ redirect: true});
+        localStorage.clear();
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);
         localStorage.setItem('user_id', response.data.user_id);
