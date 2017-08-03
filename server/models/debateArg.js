@@ -19,5 +19,5 @@ module.exports.addArgument = (newArg, callback) => {
 
 // Get arguments by side & debate topic
 module.exports.getArgsByTopicAndSide = (topic, side, callback) => {
-  DebateArg.find({debateTopic: topic, debateSide: side});
+  DebateArg.find({debateTopic: topic, debateSide: side}, callback);
 };

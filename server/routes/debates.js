@@ -70,10 +70,10 @@ router.post('/api/postArg', (req, res) => {
 });
 
 router.get('/api/getArgs', (req, res) => {
-  console.log('ATTEMPT get args', req.params);
+  console.log('ATTEMPT get args', req.query);
 
-  const topic = req.body.topic;
-  const side = req.body.side;
+  const topic = req.query.topic;
+  const side = req.query.side;
 
   DebateArg.getArgsByTopicAndSide(topic, side, (err, data) => {
     if (err) {
