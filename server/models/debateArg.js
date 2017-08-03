@@ -2,15 +2,22 @@ const mongoose = require('mongoose');
 
 const DebateArgSchema = mongoose.Schema({
   updated: { type: Date, default: Date.now },
-  side: String,
   body: String,
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
   votes: Number,
+  debateTopic: String,
+  debateSide: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   activeDebate: { type: mongoose.Schema.Types.ObjectId, ref: 'Debate' },
 });
 
 const DebateArg = module.exports = mongoose.model('DebateArg', DebateArgSchema);
 
-//search by side && debate topic/id
+// Add an argument for a debate side
+module.exports.addArgument = (newArg, callback) => {
+	newArg.save(callback);
+};
 
-//search for total pts and reduce
+// Get arguments by side & debate topic
+module.exports.getArgsByTopicAndSide = (topic, side, callback) => {
+  DebateArg.find({debateTopic: topic, debateSide: side});
+};

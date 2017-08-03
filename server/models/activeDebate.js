@@ -6,7 +6,6 @@ const ActiveDebateSchema = mongoose.Schema({
   for: { type: mongoose.Schema.Types.ObjectId, ref: 'For' },
   against: { type: mongoose.Schema.Types.ObjectId, ref: 'Against' },
   spectator: { type: mongoose.Schema.Types.ObjectId, ref: 'Spectator' },
-  // have debatePoints foreign key which is type array of debatePoints [{}]
   debateArgs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DebateArg'}],
   votesPro: Number,
   votesCon: Number,
@@ -20,9 +19,10 @@ module.exports.add = (debate, callback) => {
 
 module.exports.getAll = (callback) => {
   ActiveDebate.find(callback);
-	// ActiveDebate.find().remove(callback); // run this to delete all debates off mongo db
+	// ActiveDebate.find().remove(callback); // run this to delete all debates off
 };
 
-module.exports.getArguments = (callback) => {
-
+// Get number of votes for an argument
+module.exports.getVotesByTopic = (topic, callback) => {
+  ActiveDebate.findOne({topic: topic}, callback);
 };

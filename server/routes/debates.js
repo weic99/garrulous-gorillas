@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const ActiveDebate = require('../models/activeDebate');
+const DebateArg = require('../models/debateArg');
 
 router.post('/api/post', (req, res) => {
 
@@ -44,5 +45,53 @@ router.get('/api/get', (req, res) => {
   });
 });
 
+router.post('/api/postArg', (req, res) => {
+
+  const newArgument = new DebateArg({
+    body: req.body.argumentBody,
+    votes: 0,
+    debateTopic: req.body.topic,
+    debateSide: req.body.side
+  });
+
+  DebateArg.addArgument(newArgument, (err, data) => {
+    if (err) {
+      res.json({
+        success: false,
+      });
+    } else if (data) {
+      console.log('POST arguments success!', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    }
+  });
+});
+
+router.get('/api/getArgs', (req, res) => {
+  console.log('ATTEMPT get args', req.params);
+
+  const topic = req.body.topic;
+  const side = req.body.side;
+
+  DebateArg.getArgsByTopicAndSide(topic, side, (err, data) => {
+    if (err) {
+      res.json({
+        success: false
+      });
+    } else if (data) {
+      console.log('GET arguments success!', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    }
+  });
+});
+
+router.get('/api/getVotes', (req, res) => {
+
+});
 
 module.exports = router;
