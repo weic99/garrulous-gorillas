@@ -32,6 +32,9 @@ class DebateFloor extends React.Component {
 
   handleVote(event) {
     // When a box is checked, update the value of values by 1, to the proper debate ID and proper position
+
+    // If this get's checked for the first time and submitted
+      // Update the number of votes for event.target.name?
     let checked = event.target.checked
     if (!checked) {
       console.log('already checked!')

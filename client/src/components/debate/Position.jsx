@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Argument from './Argument.jsx'
+import Argument from './Argument.jsx';
+import axios from 'axios';
 const socket = require('socket.io-client')('http://localhost:3000/for');
 
 class Position extends React.Component {
@@ -17,6 +18,27 @@ class Position extends React.Component {
     });
     this.addArguments.bind(this);
   }
+
+
+  componentDidMount() {
+
+    // QUERY DB for points for pro or con and set state
+    axios.get('DB ACTIVE TABLES END POINT')
+      .then(response=>
+        console.log('Getting Point Values from [Position]')
+       )
+
+    // Query DB for all args from this debate topic and this position
+    // Set to state, arguments
+    // position = this.props.position
+    axios.get('DB DebateArgs END POINT')
+      .then(response=>
+        console.log('Getting All Args from [Position]')
+        )
+  }
+
+
+
 
   addArguments(newArg) {
     let newArgsArr = this.state.arguments.slice();
