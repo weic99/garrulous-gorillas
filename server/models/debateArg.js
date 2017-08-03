@@ -37,3 +37,9 @@ module.exports.addOneVoteForArgumentByBody = (argument, callback) => {
     { $inc: {'votes': 1} },
   callback);
 };
+
+module.exports.getArgumentByBody = (argument, callback) => {
+  DebateArg.findOne(
+    { body: argument },
+  callback);
+};

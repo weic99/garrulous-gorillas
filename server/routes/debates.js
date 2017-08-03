@@ -118,12 +118,10 @@ router.put('/api/addPtToDebateSide', (req, res) => {
 });
 
 router.put('/api/addVoteToArgument', (req, res) => {
-  console.log('[addVoteToArgument]', req.body.id);
-
-  let id = req.body.id;
+  // Currently this is set to querying by body (not by id)
+  // let id = req.body.id;
   let argument = req.body.argument;
 
-  // to add a vote for 
   DebateArg.addOneVoteForArgumentByBody(argument, (err, data) => {
     if (err) {
       res.json({
@@ -140,7 +138,21 @@ router.put('/api/addVoteToArgument', (req, res) => {
 });
 
 router.get('/api/getVotes', (req, res) => {
-
+  let argument = req.query.argument;
+  DebateArg.getArgumentByBody(argument, (err, data) => {
+    if (err) {
+      res.json({
+        success: false
+      });
+    } else if (data) {
+      console.log('GET Argument data. success!', data);
+      res.json({
+        success: true,
+        // Data returned is the number of votes
+        data: data.votes
+      });
+    }
+  });
 });
 
 module.exports = router;
