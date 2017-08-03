@@ -32,38 +32,12 @@ class App extends React.Component {
       <div>
         <Nav />
         <h1 >Garrulous - Where Walter Is King</h1>
-        <Main />
-        <div>Nav Goes Here</div>
-
-        <DebateFloor />
-        <div>Chat Goes Here</div>
-
-        <h1>Spectators</h1>
-        <Chatview />
-
-        
-        <h1>For</h1>
-        <Forview />
-        
-        <h1>Against</h1>
-        <Againstview />
-
-
-
         <Switch>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp}/>
-          <Route path="/" component={Main}/>
-          <Main />
+          <Route path="/Home" component={Main}/>
           <DebateFloor />
-          <div>Chat Goes Here</div>
-          
-          <div>Sample Login</div>
-          <Login />
-          
-          <div>Sample Sign up</div>
-          <SignUp />
-          
+          <div>Chat Goes Here</div>          
           <h1>Spectators</h1>
           <Chatview />
           

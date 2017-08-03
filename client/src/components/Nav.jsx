@@ -26,7 +26,7 @@ class Nav extends React.Component {
           <div className="navbar-header" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
               <li><Link to='/home'>Home</Link></li>
-              <li><Link to='/debates'>All Debates</Link></li>
+              <li><Link to='/debate'>Debate Sample</Link></li>
               <li><Link to='/login'>Login</Link></li>
               <li><Link to='/signup'>Signup</Link></li>
             </ul>
