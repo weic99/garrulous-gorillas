@@ -7,6 +7,13 @@ const router = express.Router();
 const User = require('../models/user');
 
 router.post('/register', (req, res) => {
+  if (!req.body.username || !req.body.password) {
+    res.status(422).json({
+      success: false,
+      msg: `Missing username/password`
+    });
+  }
+  
   const newUser = new User({
     username: req.body.username,
     password: req.body.password
@@ -15,7 +22,7 @@ router.post('/register', (req, res) => {
   User.getUserByUsername(newUser.username, (err, user) => {
     if (err) throw err;
     if (user) {
-      res.status(401).json({
+      res.status(409).json({
         success: false,
         msg: `Username ${req.body.username} is not available`
       });
