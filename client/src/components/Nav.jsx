@@ -12,11 +12,13 @@ class Nav extends React.Component {
 
   constructor(props) {
     super(props);
+    this.logout = () => {
+      localStorage.clear();
+    };
   }
 
   componentDidMount() {
     
-
   }
 
   render() {
@@ -29,6 +31,7 @@ class Nav extends React.Component {
               <li><Link to='/debate'>Debate Sample</Link></li>
               <li><Link to='/login'>Login</Link></li>
               <li><Link to='/signup'>Signup</Link></li>
+              <li onClick={() => this.logout()}><Link to='/login'>Logout</Link></li>
             </ul>
           </div>
         </div>
