@@ -17,6 +17,10 @@ module.exports.add = (debate, callback) => {
   debate.save(callback);
 };
 
+module.exports.addToArgumentToDebate = (debate, argument, callback) => {
+  
+};
+
 module.exports.getAll = (callback) => {
   ActiveDebate.find(callback);
 	// ActiveDebate.find().remove(callback); // run this to delete all debates off

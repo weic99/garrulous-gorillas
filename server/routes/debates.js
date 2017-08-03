@@ -67,6 +67,11 @@ router.post('/api/postArg', (req, res) => {
       });
     }
   });
+
+  // TODO later: supposed to add to activeDebate's debateArgs array
+  // ActiveDebate.addToArgumentToDebate(newArgument, (err, data) => {
+  // });
+
 });
 
 router.get('/api/getArgs', (req, res) => {
