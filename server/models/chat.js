@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ChatLogSchema = mongoose.Schema({
   updated: { type: Date, default: Date.now },
   body: String,
-  side: String,
+  debateSide: String,
   votes: Number,
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   activeDebate: { type: Schema.Types.ObjectId, ref: 'Debate' }

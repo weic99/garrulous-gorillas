@@ -19,7 +19,8 @@ export default class Chatview extends React.Component {
       // console.log('message', message);
       socket.emit('chat', {
         username: username,
-        message: message
+        message: message,
+        side: 'spectator'
       });
     };
     

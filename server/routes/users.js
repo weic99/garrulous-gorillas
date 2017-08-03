@@ -12,16 +12,26 @@ router.post('/register', (req, res) => {
     password: req.body.password
   });
   
-  User.addUser(newUser, (err, user) => {
-    if (err) {
-      res.json({
+  User.getUserByUsername(newUser.username, (err, user) => {
+    if (err) throw err;
+    if (user) {
+      res.status(401).json({
         success: false,
-        msg: `Failed to register new user: ${newUser.username}`
+        msg: `Username ${req.body.username} is not available`
       });
-    } else if (user) {
-      res.json({
-        success: true,
-        msg: `New user ${newUser.username} is registered`
+    } else {
+      User.addUser(newUser, (err, user) => {
+        if (err) {
+          res.json({
+            success: false,
+            msg: `Failed to register new user: ${newUser.username}`
+          });
+        } else if (user) {
+          res.json({
+            success: true,
+            msg: `New user ${newUser.username} is registered`
+          });
+        }
       });
     }
   });
