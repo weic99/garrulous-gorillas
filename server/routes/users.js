@@ -57,6 +57,8 @@ router.post('/login', (req, res) => {
           }, config.secret, { expiresIn: '1h' });
           res.json({
             success: true,
+            username: user.username,
+            user_id: user._id,
             token: token
           });
         } else {
