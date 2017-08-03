@@ -25,6 +25,9 @@ export default class Forview extends React.Component {
     
     // Listen for chats
     socket.on('chat', (data) => {
+      // Create a button that when pressed, adds a point to the DB for this specific position
+      // If data has #arg or some other keyword
+        // then render the element with a the button
       const output = ReactDOM.findDOMNode(this.refs.output);
       output.innerHTML += `<p><strong>${data.username}:</strong>${data.message}</p>`;
       output.lastChild.scrollIntoView();

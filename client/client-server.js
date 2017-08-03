@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('*', function(req, res) {
   res.sendFile('index.html', { root: __dirname + '/public'});
-  //res.send('You shouldn\'t be here...');
+  // res.send('You shouldn\'t be here...');
 });
 
 //test work for sockets
