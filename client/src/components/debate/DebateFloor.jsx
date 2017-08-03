@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Position from './Position.jsx';
 import axios from 'axios';
-import ChatView from '../chatview/chatview.jsx'
+import ChatView from '../chatview/chatview.jsx';
+import ForView from '../chatview/againstview.jsx';
+import AgainstView from '../chatview/forview.jsx';
 // import ChatView from '../chatview/chatview.jsx';
 // import ChatView from '../chatview/chatview.jsx';
 
@@ -31,21 +33,8 @@ class DebateFloor extends React.Component {
         },
       ]    
     }
-    this.handleVote = this.handleVote.bind(this);
   }
 
-  handleVote(event) {
-    // When a box is checked, update the value of values by 1, to the proper debate ID and proper position
-
-    // If this get's checked for the first time and submitted
-      // Update the number of votes for event.target.name?
-    let checked = event.target.checked
-    if (!checked) {
-      console.log('already checked!')
-    } else {
-      console.log('checking box')
-    }
-  }
   componentWillMount() {
 
     
