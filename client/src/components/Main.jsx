@@ -34,8 +34,8 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-      <h4>List of Debates</h4>
-      { this.state.debates.map( (item, i) => <DebateItem debate = {item} key= {i}/> )}
+        <h4>List of Debates</h4>
+        { this.state.debates.map( (item, i) => <DebateItem debate = {item} key= {i}/> )}
       </div>
     )
   }
