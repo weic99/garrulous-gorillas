@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Position from './Position.jsx';
+import axios from 'axios';
+import ChatView from '../chatview/chatview.jsx';
+import ForView from '../chatview/againstview.jsx';
+import AgainstView from '../chatview/forview.jsx';
+// import ChatView from '../chatview/chatview.jsx';
+// import ChatView from '../chatview/chatview.jsx';
 
 class DebateFloor extends React.Component {
   constructor(props) {
@@ -27,39 +33,38 @@ class DebateFloor extends React.Component {
         },
       ]    
     }
-    this.handleVote = this.handleVote.bind(this);
   }
 
-  handleVote(event) {
-    // When a box is checked, update the value of values by 1, to the proper debate ID and proper position
-
-    // If this get's checked for the first time and submitted
-      // Update the number of votes for event.target.name?
-    let checked = event.target.checked
-    if (!checked) {
-      console.log('already checked!')
-    } else {
-      console.log('checking box')
-    }
-  }
   componentWillMount() {
 
     
   }
   componentDidMount() {
-    // Query Database using set interval and axios for the amount of votes, and arguments
+ 
+  }
 
+
+  // add new arguments
+  addArguments(newArg) {
+    let newArgsArr = this.state.arguments.slice();
+    newArgsArr.push(newArg);
+    this.setState({
+      arguments: newArgsArr,
+    })
   }
 
   render() {
     return (
       <div className="container">
-        <div className="Row">
-          <div>Topic</div>
-          {this.state.positions.map((position, index) => <Position handleVote={this.handleVote} key={index} position={position} />)}
-  
-          <Position position="Pro" arguments={this.state.argumentsPro} points={this.state.votesPro} />
-          <Position position="Con" arguments={this.state.argumentsCon} points={this.state.votesCon} />
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3">Topic</div>
+        </div>
+          <div className="row">
+            <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} />
+            <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} />
+          </div>
+        <div>
+          <ChatView />
         </div>
       </div>
       )
