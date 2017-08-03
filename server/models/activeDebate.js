@@ -7,8 +7,8 @@ const ActiveDebateSchema = mongoose.Schema({
   against: { type: mongoose.Schema.Types.ObjectId, ref: 'Against' },
   spectator: { type: mongoose.Schema.Types.ObjectId, ref: 'Spectator' },
   debateArgs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DebateArg'}],
-  votesPro: Number,
-  votesCon: Number,
+  pointsPro: { type: Number, default: 0},
+  pointsCon: { type: Number, default: 0}
 });
 
 const ActiveDebate = module.exports = mongoose.model('ActiveDebate', ActiveDebateSchema);
@@ -24,6 +24,31 @@ module.exports.addToArgumentToDebate = (debate, argument, callback) => {
 module.exports.getAll = (callback) => {
   ActiveDebate.find(callback);
 	// ActiveDebate.find().remove(callback); // run this to delete all debates off
+};
+
+// Add point to a particular debate (find by topic & side)
+module.exports.addOnePoint = (topic, side, callback) => {
+
+  if (side === 'for') {
+
+    ActiveDebate.update(
+      { topic: topic },
+      { $inc: {'pointsPro': 1} },
+    callback);
+
+  } else if (side === 'against') {
+
+    ActiveDebate.update(
+      { topic: topic },
+      { $inc: {'pointsCon': 1} }, 
+    callback);
+    
+  } else {
+    ActiveDebate.update(
+      { topic: topic },
+    callback);
+  }
+
 };
 
 // Get number of votes for an argument
