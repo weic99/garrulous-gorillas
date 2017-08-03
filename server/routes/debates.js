@@ -100,9 +100,10 @@ router.put('/api/addPtToDebateSide', (req, res) => {
 
   let topic = req.body.topic;
   let side = req.body.side;
+  let numOfPoints = req.body.numOfPoints ? req.body.numOfPoints : 1;
 
   // to add a vote for 
-  ActiveDebate.addOnePoint(topic, side, (err, data) => {
+  ActiveDebate.addPoint(topic, side, numOfPoints, (err, data) => {
     if (err) {
       res.json({
         success: false
@@ -121,8 +122,9 @@ router.put('/api/addVoteToArgument', (req, res) => {
   // Currently this is set to querying by body (not by id)
   // let id = req.body.id;
   let argument = req.body.argument;
+  let numOfVotes = req.body.numOfVotes ? req.body.numOfVotes : 1;
 
-  DebateArg.addOneVoteForArgumentByBody(argument, (err, data) => {
+  DebateArg.addVoteForArgumentByBody(argument, numOfVotes, (err, data) => {
     if (err) {
       res.json({
         success: false

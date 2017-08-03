@@ -27,20 +27,20 @@ module.exports.getAll = (callback) => {
 };
 
 // Add point to a particular debate (find by topic & side)
-module.exports.addOnePoint = (topic, side, callback) => {
+module.exports.addPoint = (topic, side, numOfPoints, callback) => {
 
   if (side === 'for') {
 
     ActiveDebate.update(
       { topic: topic },
-      { $inc: {'pointsPro': 1} },
+      { $inc: {'pointsPro': numOfPoints} },
     callback);
 
   } else if (side === 'against') {
 
     ActiveDebate.update(
       { topic: topic },
-      { $inc: {'pointsCon': 1} }, 
+      { $inc: {'pointsCon': numOfPoints} }, 
     callback);
     
   } else {

@@ -23,18 +23,18 @@ module.exports.getArgsByTopicAndSide = (topic, side, callback) => {
 };
 
 // Find the active debate by id and add to number of votes for a particular side
-module.exports.addOneVoteForArgumentById = (id, callback) => {
+module.exports.addVoteForArgumentById = (id, numOfVotes, callback) => {
   DebateArg.update(
     { _id: id },
-    { $inc: {'votes': 1} },
+    { $inc: {'votes': numOfVotes} },
   callback);
 };
 
 // Find the active debate by argumentText and add to number of votes for a particular side
-module.exports.addOneVoteForArgumentByBody = (argument, callback) => {
+module.exports.addVoteForArgumentByBody = (argument, numOfVotes, callback) => {
   DebateArg.update(
     { body: argument },
-    { $inc: {'votes': 1} },
+    { $inc: {'votes': numOfVotes} },
   callback);
 };
 
