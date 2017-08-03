@@ -27,7 +27,7 @@ module.exports.comparePassword = (password, hash, callback) => {
   });
 };
 
-module.exports.addUser = (newUser, callback) => {
+module.exports.addUser = (newUser, callback) => {  
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if (err) throw err;

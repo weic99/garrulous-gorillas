@@ -12,23 +12,26 @@ class Nav extends React.Component {
 
   constructor(props) {
     super(props);
+    this.logout = () => {
+      localStorage.clear();
+    };
   }
 
   componentDidMount() {
     
-
   }
 
   render() {
     return (
-      <div className="navbar navbar-inverse navbar-fixed-top">
+      <div className="navbar navbar-inverse">
         <div className="container">
           <div className="navbar-header" id="myNavbar">
             <ul className="nav navbar-nav navbar-right">
               <li><Link to='/home'>Home</Link></li>
               <li><Link to='/debate'>Debate Sample</Link></li>
-              <li><Link to='/login'>Login</Link></li>
-              <li><Link to='/signup'>Signup</Link></li>
+              { localStorage.token ? null : <li><Link to='/login'>Login</Link></li> }  
+              { localStorage.token ? null : <li><Link to='/signup'>Signup</Link></li> }  
+              { localStorage.token ? <li onClick={() => this.logout()}><Link to='/login'>Logout</Link></li> : null }  
             </ul>
           </div>
         </div>
