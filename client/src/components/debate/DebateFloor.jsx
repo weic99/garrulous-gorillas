@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Position from './Position.jsx';
 import axios from 'axios';
 import ChatView from '../chatview/chatview.jsx';
-import ForView from '../chatview/againstview.jsx';
-import AgainstView from '../chatview/forview.jsx';
+import ForView from '../chatview/forview.jsx';
+import AgainstView from '../chatview/againstview.jsx';
 // import ChatView from '../chatview/chatview.jsx';
 // import ChatView from '../chatview/chatview.jsx';
 
@@ -12,6 +12,7 @@ class DebateFloor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showJoinButton: true,
       // These should be populated by the DB, or sockets for each specific debate
       topic: "",
       winner: "",
@@ -43,6 +44,20 @@ class DebateFloor extends React.Component {
  
   }
 
+  setToken(position) {
+    if (position==='for') {
+      localStorage.setItem('position', 'for')
+    }  else {
+      localStorage.setItem('position', 'against')
+    }
+    this.setState({
+      showJoinButton: false,
+    })
+    console.log(position)
+    console.log('token set');
+    this.forceUpdate();
+  }
+
 
   // add new arguments
   addArguments(newArg) {
@@ -60,12 +75,14 @@ class DebateFloor extends React.Component {
           <div className="col-md-6 col-md-offset-3">Topic</div>
         </div>
           <div className="row">
-            <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} />
-            <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} />
+            <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} setToken={this.setToken.bind(this, 'for')} showJoinButton={this.state.showJoinButton} />
+            <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} setToken={this.setToken.bind(this, 'against')} showJoinButton={this.state.showJoinButton} />
           </div>
-        <div>
-          <ChatView />
-        </div>
+          <div className="row">
+            { localStorage.position === 'for' ? <ForView /> : null}
+            { localStorage.position === 'against' ? <AgainstView /> : null}
+            { localStorage.position ? null : <ChatView />}
+          </div>
       </div>
       )
   }
