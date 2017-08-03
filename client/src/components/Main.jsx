@@ -25,25 +25,10 @@ class Main extends React.Component {
         console.log('[Main] Get debates ERROR:', err);
       })
     }
-
-    this.testGetArgs = () => {
-      console.log('GET ARGS TEST')
-      axios.get('http://localhost:3000/debates/api/getArgs', {
-        params: {
-          topic: 'Gun control in America',
-          side: 'against'
-        }
-      })
-      .then(response => {
-        console.log('RESPONSE', response);
-      })
-
-    }
   }
 
   componentDidMount() {
     this.getAllActive();
-    this.testGetArgs();
   }
 
   render() {
