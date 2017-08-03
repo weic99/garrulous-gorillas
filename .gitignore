@@ -1,4 +1,7 @@
 client/public/bundle.js
+client/public/bundle.js.map
+bundle.js
+bundle.js.map
 
 # Logs
 logs
