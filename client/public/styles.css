@@ -57,3 +57,14 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
 }
+
+form, input, h1, h4, DebateItem {
+  margin: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+
