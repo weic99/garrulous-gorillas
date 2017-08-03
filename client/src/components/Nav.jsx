@@ -32,6 +32,7 @@ class Nav extends React.Component {
               { localStorage.token ? null : <li><Link to='/login'>Login</Link></li> }  
               { localStorage.token ? null : <li><Link to='/signup'>Signup</Link></li> }  
               { localStorage.token ? <li onClick={() => this.logout()}><Link to='/login'>Logout</Link></li> : null }  
+              <li><Link to='/debatesample'>Debate Sample</Link></li>
             </ul>
           </div>
         </div>

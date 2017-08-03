@@ -25,6 +25,8 @@ class App extends React.Component {
 
   componentDidMount() {
 
+    // query database for points and pass to positions
+
   }
 
   render() {
@@ -36,7 +38,7 @@ class App extends React.Component {
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/Home" component={Main}/>
-          <DebateFloor />
+          <Route path="/debatesample" component={DebateFloor}/>
           <div>Chat Goes Here</div>          
           <h1>Spectators</h1>
           <Chatview />
