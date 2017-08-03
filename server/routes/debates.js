@@ -95,6 +95,50 @@ router.get('/api/getArgs', (req, res) => {
   });
 });
 
+router.put('/api/addPtToDebateSide', (req, res) => {
+  console.log('[addPtToDebateSide]');
+
+  let topic = req.body.topic;
+  let side = req.body.side;
+
+  // to add a vote for 
+  ActiveDebate.addOnePoint(topic, side, (err, data) => {
+    if (err) {
+      res.json({
+        success: false
+      });
+    } else if (data) {
+      console.log('PUT +1 votes. success!', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    } 
+  });
+});
+
+router.put('/api/addVoteToArgument', (req, res) => {
+  console.log('[addVoteToArgument]', req.body.id);
+
+  let id = req.body.id;
+  let argument = req.body.argument;
+
+  // to add a vote for 
+  DebateArg.addOneVoteForArgumentByBody(argument, (err, data) => {
+    if (err) {
+      res.json({
+        success: false
+      });
+    } else if (data) {
+      console.log('PUT +1 pts. success!', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    } 
+  });
+});
+
 router.get('/api/getVotes', (req, res) => {
 
 });
