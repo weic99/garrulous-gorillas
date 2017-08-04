@@ -3,11 +3,12 @@
 var sortArgsByVote = function(data) {
   let results = [];
   // sort array of argument objects
-  return data.sort((a, b)=> {
-    return a.votes - b.votes
-  }).map(obj => obj.body)
 
-  // return 
+  var sorted = data.sort((a, b)=> {
+    return b.votes - a.votes
+  }).map(obj => obj.body)
+  console.log('sorted args', sorted);
+  return sorted;
 }
 
 exports.sortArgsByVote = sortArgsByVote;
