@@ -59,11 +59,15 @@
 }
 
 form, input, h1, h4, DebateItem {
-  margin: 20px;
+    margin: 20px;
 }
 
 ul {
-  list-style-type: none;
+    list-style-type: none;
+}
+
+li.debate-item-style {
+    padding: 0.3em 0em;
 }
 
 .landing {
