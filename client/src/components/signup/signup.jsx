@@ -46,7 +46,7 @@ class SignUp extends React.Component {
             </FormGroup>
             <FormGroup controlId="formHorizontalPassword">
                 <ControlLabel>Password </ControlLabel>
-                <FormControl type="password" ref="password" onChange={this.handleChange} placeholder="Password" />
+                <FormControl type="password" ref="password" onChange={this.handleChange} placeholder="password" />
             </FormGroup>
             <Button onClick={(event) => this.handleSubmit(event)}>Sign Up</Button>
             {this.state.errorMessage &&
