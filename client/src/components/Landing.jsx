@@ -14,8 +14,8 @@ class Landing extends React.Component {
     super(props);
 
     this.state = {
+      categories: [],
     }
-
   }
 
   componentDidMount() {
@@ -23,8 +23,43 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Debate App</h2>
+      <div className='landing'>
+        <div className="container">
+          <h1 className="text-center">Moot</h1>
+          <div className='row'>
+            <div className='col-sm-4'>
+              <h2>Foreign Policy</h2>
+            </div>
+            <div className='col-sm-4'>
+              <h1>Law</h1>
+            </div>
+            <div className='col-sm-4'>
+              <h1>Human Rights</h1>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-sm-4'>
+              <h1>Finance</h1>
+            </div>
+            <div className='col-sm-4'>
+              <h1>Education</h1>
+            </div>
+            <div className='col-sm-4'>
+              <h1>Climate Change</h1>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col-sm-4'>
+              <h1>Gun Control</h1>
+            </div>
+            <div className='col-sm-4'>
+              <h1>Fake News</h1>
+            </div>
+            <div className='col-sm-4'>
+              <h1>Marijuana</h1>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

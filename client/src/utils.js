@@ -1,13 +1,14 @@
 
 
-var sortArgsByVote = function(data) {
+exports.sortArgsByVote = function(data) {
   let results = [];
   // sort array of argument objects
-  return data.sort((a, b)=> {
-    return a.votes - b.votes
+
+  var sorted = data.sort((a, b)=> {
+    return b.votes - a.votes
   }).map(obj => obj.body)
+  console.log('sorted args', sorted);
+  return sorted;
+};
 
-  // return 
-}
 
-exports.sortArgsByVote = sortArgsByVote;

@@ -43,8 +43,10 @@ class Main extends React.Component {
     if (!debateIsSelected) {
       return (
         <div>
-        <h4>List of Debates</h4>
+        <h1>Debates</h1>
+        <ul>
         { this.state.debates.map( (debate, i) => <DebateItem debate={debate} key={i} debateSelectHandler={this.props.debateSelectHandler} /> ) }
+        </ul>
         <Switch>
         { this.state.debates.map( (debate, i) => 
           <Route path={`debates/${debate.topic.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase()}`} component={DebateFloor} key={i} /> ) }
