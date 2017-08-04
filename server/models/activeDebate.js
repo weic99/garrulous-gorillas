@@ -31,22 +31,20 @@ module.exports.addPoint = (topic, side, numOfPoints, callback) => {
 
   if (side === 'for') {
 
-    ActiveDebate.update(
+    ActiveDebate.findOneAndUpdate(
       { topic: topic },
       { $inc: {'pointsPro': numOfPoints} },
     callback);
 
   } else if (side === 'against') {
 
-    ActiveDebate.update(
+    ActiveDebate.findOneAndUpdate(
       { topic: topic },
       { $inc: {'pointsCon': numOfPoints} }, 
     callback);
     
   } else {
-    ActiveDebate.update(
-      { topic: topic },
-    callback);
+    console.log('error: wrong param');
   }
 
 };
