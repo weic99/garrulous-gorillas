@@ -13,14 +13,13 @@ class Position extends React.Component {
     super(props)
     this.state = {
       arguments: [],
-      points: this.props.points,
+      points: 'Loading...',
       topic: this.props.topic,
     }
 
     const socket = require('socket.io-client')(`http://localhost:3000/${this.props.position.toLowerCase()}`)
 
     socket.on('chat', (data) => {
-      // EDITED JUST FOR DEMO
       if (data.message.substring(0, 9) === '#disagree' && this.props.position==='Against') {
       axios.post('http://127.0.0.1:3000/debates/api/postArg', {
         argumentBody: data.message.substring(10),
@@ -28,8 +27,8 @@ class Position extends React.Component {
         side: this.props.position.toLowerCase(),
       })
       .then (response=> {
+        this.addArguments(data.message.substring(10));
       })
-      this.addArguments(data.message.substring(10));
       console.log('#disagree called')
       }  
 
@@ -40,6 +39,7 @@ class Position extends React.Component {
           side: this.props.position.toLowerCase(),
         })
         .then (response=> {
+          this.addArguments(data.message.substring(7));
           console.log('agree arg posted', response)
         })
       }  
@@ -50,6 +50,7 @@ class Position extends React.Component {
   }
 
   componentWillMount() {
+
     axios.get('http://127.0.0.1:3000/debates/api/getArgs', {
       params: {
         side: this.props.position.toLowerCase(),
@@ -59,7 +60,7 @@ class Position extends React.Component {
     })
     .then(response=> {
         let args = response.data.data;
-        let topSortedArgs = sortArgsByVote(args).slice(0, 5);
+        let topSortedArgs = sortArgsByVote(args).slice(0, 10);
         this.setState({
           arguments: topSortedArgs
         })
@@ -92,7 +93,7 @@ class Position extends React.Component {
     // Set to state, arguments
     // position = this.props.position
     // {this.state.positions.map((position, index) => <Position handleVote={this.handleVote} key={index} position={position} />)}
-    setInterval(()=> {
+    this.intervalId = setInterval(()=> {
       axios.get('http://127.0.0.1:3000/debates/api/getArgs', {
         params: {
           side: this.props.position.toLowerCase(),
@@ -102,7 +103,7 @@ class Position extends React.Component {
       })
       .then(response=> {
           let args = response.data.data;
-          let topSortedArgs = sortArgsByVote(args).slice(0, 5);
+          let topSortedArgs = sortArgsByVote(args).slice(0, 10);
           this.setState({
             arguments: topSortedArgs
           })
@@ -129,6 +130,8 @@ class Position extends React.Component {
     }, 5000);
   }
 
+
+
   handleVote() {
     this.setState({
       points: this.state.points+1
@@ -152,6 +155,10 @@ class Position extends React.Component {
     console.log('added argument', this.state.arguments);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
   render() {
     return (
       <div className='col-sm-6'>
@@ -159,7 +166,7 @@ class Position extends React.Component {
           <div><h4>{this.state.points} Points</h4></div>
         {this.props.showJoinButton ? <Button onClick={this.props.setToken} bsStyle="success">Join</Button> : null}
         
-        {this.state.arguments.map( (argument, index) => <Argument handleVote={this.handleVote} argument={argument} />)}
+        {this.state.arguments.map( (argument, index) => <Argument position= {this.props.position} handleVote={this.handleVote} argument={argument} />)}
       </div>
     )
   }

@@ -16,24 +16,7 @@ class DebateFloor extends React.Component {
       showJoinButton: true,
       // These should be populated by the DB, or sockets for each specific debate
       topic: this.props.currentDebateSelected.topic,
-      winner: "",
-      argumentsFor: ['These are my feeeeeeeeeelings', 'Here are moreeeee feeeeelings', 'I LOVEEEEEE IT', 'Clearly you are mistake. I CANNOT BELIEVE THIS'],
-      argumentsAgainst: ['You are wrong', 'OBJECTTTTIONNNNNNNNN', 'I HATEEEEEEEE THATTTTTT', 'We do not believe in such savage ideas'],
-      votesFor: 5,
-      votesAgainst: 11,
-      positions: [
-        {
-          position: 'For',
-          points: 0,
-          arguments: ['These are my feeeeeeeeeelings', 'Here are moreeeee feeeeelings', 'I LOVEEEEEE IT', 'Clearly you are mistake. I CANNOT BELIEVE THIS'],
-
-        },
-        {
-          position: 'Against',
-          points: 0,
-          arguments: ['You are wrong', 'OBJECTTTTIONNNNNNNNN', 'I HATEEEEEEEE THATTTTTT', 'We do not believe in such savage ideas'],
-        },
-      ]    
+      winner: "",  
     }
   }
 
@@ -80,15 +63,11 @@ class DebateFloor extends React.Component {
         </div>
           <div className="row">
             <Position position="For" 
-                      arguments={this.state.argumentsFor} 
-                      points={this.state.votesFor} 
                       setToken={this.setToken.bind(this, 'for')} 
                       showJoinButton={this.state.showJoinButton}
                       // change to props later
                       topic={this.state.topic} />
             <Position position="Against" 
-                      arguments={this.state.argumentsAgainst} 
-                      points={this.state.votesAgainst} 
                       setToken={this.setToken.bind(this, 'against')} 
                       showJoinButton={this.state.showJoinButton}
                       // change to props later

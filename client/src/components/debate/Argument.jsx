@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import axios from 'axios';
 
 class Argument extends React.Component {
   constructor(props) {
@@ -20,17 +21,25 @@ class Argument extends React.Component {
       status: 'Received'
     })
     this.props.handleVote();
+
+    axios.put('http://127.0.0.1:3000/debates/api/addVoteToArgument', {
+      argument: this.props.argument
+    })
+    .then(response)
     }
-    console.log('voted insde arg', this.state.voted)
   }
 
   render() {
+    let buttonTemplate = null;
+    if (localStorage.position === this.props.position.toLowerCase() || !localStorage.position) {
+      buttonTemplate = <Button onClick={this.handleVote}>
+            {this.state.status}
+          </Button>
+    }
     return(
       <div>
-        <form>
-          <Button onClick={this.handleVote}>
-            {this.state.status}
-          </Button>{this.props.argument}
+        <form>{buttonTemplate}
+          {this.props.argument}
         </form>
       </div>
       )
