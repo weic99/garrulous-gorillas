@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ControlLabel, Form, FormControl, FormGroup } from 'react-bootstrap';
 import axios from 'axios';
+import { Route, Redirect } from 'react-router'
 
 class SignUp extends React.Component {
   constructor() {
@@ -12,6 +13,10 @@ class SignUp extends React.Component {
     };
     
     this.handleSubmit = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.setState({ errorMessage: '' });
+      
       const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
       const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
       const creds = { username: username, password: password };
@@ -23,7 +28,8 @@ class SignUp extends React.Component {
         console.log('[Signup] Success Response', response);
         ReactDOM.findDOMNode(this.refs.username).value = '';
         ReactDOM.findDOMNode(this.refs.password).value = '';
-      
+        this.setState({ errorMessage: '' });
+        this.setState({ errorMessage: response.data.msg });
         this.setState({ redirect: true});
       })
       .catch(error => {
@@ -39,16 +45,17 @@ class SignUp extends React.Component {
     };
     return (
       <div>
-        <Form inline>
+        <h1>Create a New Account</h1>
+        <Form inline onSubmit={this.handleSubmit}>
             <FormGroup controlId="formHorizontalEmail">
                 <ControlLabel>Username </ControlLabel>
-                <FormControl type="username" ref="username" onChange={this.handleChange} placeholder="username" />
+                <FormControl required type="username" ref="username" onChange={this.handleChange} placeholder="username" />
             </FormGroup>
             <FormGroup controlId="formHorizontalPassword">
                 <ControlLabel>Password </ControlLabel>
-                <FormControl type="password" ref="password" onChange={this.handleChange} placeholder="password" />
+                <FormControl required type="password" ref="password" onChange={this.handleChange} placeholder="password" />
             </FormGroup>
-            <Button onClick={(event) => this.handleSubmit(event)}>Sign Up</Button>
+            <Button type="submit" onClick={this.handleSubmit}>Sign Up</Button>
             {this.state.errorMessage &&
               <p style={{color:'red'}}>{this.state.errorMessage}</p>
             }

@@ -25,13 +25,14 @@ class Nav extends React.Component {
     return (
       <div className="navbar navbar-inverse">
         <div className="container">
-          <div className="navbar-header" id="myNavbar">
+          <div className="navbar-header" id="myNavbar" >
             <ul className="nav navbar-nav navbar-right">
               <li><Link to='/home'>Home</Link></li>
               <li><Link to='/debatesample'>Debate Sample</Link></li>
               { localStorage.token ? null : <li><Link to='/login'>Login</Link></li> }  
               { localStorage.token ? null : <li><Link to='/signup'>Signup</Link></li> }  
-              { localStorage.token ? <li onClick={() => this.logout()}><Link to='/login'>Logout</Link></li> : null }  
+              { localStorage.token ? <li onClick={() => this.logout()}><Link to='/login'>Logout</Link></li> : null }
+              { localStorage.username ? <li><Link to='/home'>{localStorage.username}</Link></li> : null }    
             </ul>
           </div>
         </div>

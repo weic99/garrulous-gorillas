@@ -33,7 +33,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav />
-        <h1 >Garrulous - Where Walter Is King</h1>
+
         <Switch>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp}/>
