@@ -1,6 +1,6 @@
 
 
-var sortArgsByVote = function(data) {
+exports.sortArgsByVote = function(data) {
   let results = [];
   // sort array of argument objects
 
@@ -9,6 +9,6 @@ var sortArgsByVote = function(data) {
   }).map(obj => obj.body)
   console.log('sorted args', sorted);
   return sorted;
-}
+};
 
-exports.sortArgsByVote = sortArgsByVote;
+
