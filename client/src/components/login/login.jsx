@@ -13,6 +13,10 @@ class Login extends React.Component {
     };
     
     this.handleSubmit = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      this.setState({ errorMessage: '' });
+      
       const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
       const password = ReactDOM.findDOMNode(this.refs.password).value.trim();
       const creds = { username: username, password: password };
@@ -25,11 +29,12 @@ class Login extends React.Component {
         ReactDOM.findDOMNode(this.refs.username).value = '';
         ReactDOM.findDOMNode(this.refs.password).value = '';
         
-        this.setState({ redirect: true});
         localStorage.clear();
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('username', response.data.username);
         localStorage.setItem('user_id', response.data.user_id);
+        this.setState({ errorMessage: response.data.msg });
+        this.setState({ redirect: true});
       })
       .catch(error => {
         console.log('[Login] ERROR:', error);
@@ -45,16 +50,17 @@ class Login extends React.Component {
     };
     return (
       <div>
-        <Form inline>
+        <h1>Login</h1>
+        <Form inline onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <ControlLabel>Username </ControlLabel>
-            <FormControl type="username" ref="username" onChange={this.handleChange} placeholder="username"/>
+            <FormControl required type="username" ref="username" onChange={this.handleChange} placeholder="username"/>
           </FormGroup>
           <FormGroup controlId="formHorizontalPassword">
             <ControlLabel>Password </ControlLabel>
-            <FormControl type="password" ref="password" onChange={this.handleChange} placeholder="Password"/>
+            <FormControl required type="password" ref="password" onChange={this.handleChange} placeholder="password"/>
           </FormGroup>
-          <Button onClick={(event) => this.handleSubmit(event)}>Login</Button>
+          <Button type="submit" onClick={this.handleSubmit}>Login</Button>
           {this.state.errorMessage &&
             <p style={{color:'red'}}>{this.state.errorMessage}</p>
           }

@@ -46,7 +46,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav />
-        <h1 >Garrulous - Where Walter Is King</h1>
+
         <Switch>
           <Route exact path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
           <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>

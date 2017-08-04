@@ -12,6 +12,7 @@ router.post('/register', (req, res) => {
       success: false,
       msg: `Missing username/password`
     });
+    return false;
   }
   
   const newUser = new User({
