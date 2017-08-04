@@ -7,7 +7,6 @@ import {
   Switch
 } from 'react-router-dom';
 import DebateFloor from './debate/DebateFloor.jsx';
-
 import axios from 'axios';
 
 class Main extends React.Component {
@@ -39,15 +38,25 @@ class Main extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-      <h4>List of Debates</h4>
-      { this.state.debates.map( (item, i) => <DebateItem debate = {item} key= {i}/> )}
-      <Switch>
-        <Route path='/debates/gun-control-in-america' component={DebateFloor} />
-      </Switch>
-      </div>
-    )
+    const debateIsSelected = this.props.debateIsSelected;
+
+    if (!debateIsSelected) {
+      return (
+        <div>
+        <h4>List of Debates</h4>
+        { this.state.debates.map( (debate, i) => <DebateItem debate={debate} key={i} debateSelectHandler={this.props.debateSelectHandler} /> ) }
+        <Switch>
+        { this.state.debates.map( (debate, i) => 
+          <Route path={`debates/${debate.topic.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase()}`} component={DebateFloor} key={i} /> ) }
+        </Switch>
+        </div>
+      )
+
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 
 }

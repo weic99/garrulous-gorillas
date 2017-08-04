@@ -34,6 +34,7 @@ export default class Againstview extends React.Component {
    render () {
     return (
         <div className="container">
+        <h3>Side: Against</h3>
           <div className="row">
               <div className="col-md-5">
                   <div className="panel panel-primary">

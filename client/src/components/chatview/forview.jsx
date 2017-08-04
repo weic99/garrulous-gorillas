@@ -12,6 +12,7 @@ export default class Forview extends React.Component {
     }
 
     this.handleSubmit = (event) => {
+
       const username = ReactDOM.findDOMNode(this.refs.username).value.trim();
       const message = ReactDOM.findDOMNode(this.refs.message).value.trim();
       // console.log('Send message');
@@ -38,6 +39,7 @@ export default class Forview extends React.Component {
  render () {
   return (
       <div className="container">
+        <h3>Side: For</h3>
         <div className="row">
             <div className="col-md-5">
                 <div className="panel panel-primary">
@@ -68,11 +70,11 @@ export default class Forview extends React.Component {
                       </ul>
                       <div className="panel-footer">
                         <div className="input-group">
-                            <input id="btn-input" type="text" className="inputMessage form-control input-sm" ref="message" placeholder="Type your message here..." />
-                            <span className="input-group-btn">
-                                <button className="btn btn-warning btn-sm" id="btn-chat" onClick={(event) => this.handleSubmit(event)}>Send</button>
-                            </span>
-                        </div>
+                           <input id="btn-input" type="text" className="inputMessage form-control input-sm" ref="message" placeholder="Type your message here..." />
+                           <span className="input-group-btn">
+                           <button className="btn btn-warning btn-sm" id="btn-chat" onClick={(event) => this.handleSubmit(event)}>Send</button>
+                           </span>
+                        </div> 
                       </div> 
                     </div> 
                 </div>

@@ -12,15 +12,27 @@ import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
 import SignUp from './components/signup/signup.jsx';
-import Chatview from './components/chatview/chatview.jsx';
-import Forview from './components/chatview/forview.jsx';
-import Againstview from './components/chatview/againstview.jsx';
+
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
+      currentDebateSelected: {},
+      debateIsSelected: false
     }
+
+    this.debateSelectHandler = (debateSelected) => {
+      // When a debate is clicked, App will be notified and get the current debate data
+      console.log('[App] debateSelectHandler fired -->', debateSelected);
+
+      // Save in state
+      this.setState({currentDebateSelected: debateSelected});
+      this.setState({debateIsSelected: true});
+    }
+
+    this.debateSelectHandler.bind(this);
   }
 
   componentDidMount() {
@@ -30,26 +42,20 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <Nav />
         <h1 >Garrulous - Where Walter Is King</h1>
         <Switch>
+          <Route exact path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
+          <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
+          <Route path="/debatesample" component={ () => <DebateFloor currentDebate={this.state.currentDebate} debateIsSelected={this.state.debateIsSelected}/> }/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp}/>
-          <Route path="/Home" component={Main}/>
-          <Route path="/debatesample" component={DebateFloor}/>
-          <div>Chat Goes Here</div>          
-          <h1>Spectators</h1>
-          <Chatview />
-          
-          <h1>For</h1>
-          <Forview />
-          
-          <h1>Against</h1>
-          <Againstview />
-        </Switch>
 
+          <DebateFloor currentDebate={this.state.currentDebate} debateIsSelected={this.state.debateIsSelected}/>
+        </Switch>
       </div>)
   }
 }
