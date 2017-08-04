@@ -27,7 +27,7 @@ class App extends React.Component {
       // When a debate is clicked, App will be notified and get the current debate data
       console.log('[App] debateSelectHandler fired -->', debateSelected);
 
-      // Save current debate/status in state
+      // Save in state
       this.setState({currentDebateSelected: debateSelected});
       this.setState({debateIsSelected: true});
     }
@@ -50,7 +50,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
           <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
-          <Route path="/debatesample" component={ () => <DebateFloor currentDebate={this.state.currentDebate}/> }/>
+          <Route path="/debatesample" component={ () => <DebateFloor currentDebate={this.state.currentDebate} debateIsSelected={this.state.debateIsSelected}/> }/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp}/>
 
