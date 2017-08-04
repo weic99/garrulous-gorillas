@@ -21,7 +21,7 @@ export default class Forview extends React.Component {
       socket.emit('chat', {
         username: username,
         message: message,
-        position: 'for'
+        side: 'for'
       });
     };
     // Listen for chats

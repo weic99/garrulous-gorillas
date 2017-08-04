@@ -16,8 +16,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 //   res.send('TEST!');
 // });
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile('index.html', { root: __dirname + '/public'});
+  // res.send('You shouldn\'t be here...');
+});
+
+app.get('*', function(req, res) {
+  res.redirect('/');
   // res.send('You shouldn\'t be here...');
 });
 
