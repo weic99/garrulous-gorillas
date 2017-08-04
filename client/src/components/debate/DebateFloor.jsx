@@ -10,6 +10,8 @@ import Chatview from '../chatview/chatview.jsx';
 class DebateFloor extends React.Component {
   constructor(props) {
     super(props);
+    // ToDo: now that we passed in currentDebate in debatefloor, write the logic in DebateFloor.jsx to show the debate info
+    // CurrentDebate is accessible at this.props.currentDebate
     this.state = {
       showJoinButton: true,
       // These should be populated by the DB, or sockets for each specific debate
@@ -68,22 +70,32 @@ class DebateFloor extends React.Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 col-md-offset-3">Topic</div>
+    const debateIsSelected = this.props.debateIsSelected;
+
+    if (debateIsSelected) {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 col-md-offset-3">Topic</div>
+          </div>
+            <div className="row">
+              <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} setToken={this.setToken.bind(this, 'for')} showJoinButton={this.state.showJoinButton} />
+              <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} setToken={this.setToken.bind(this, 'against')} showJoinButton={this.state.showJoinButton} />
+            </div>
+            <div className="row">
+              { localStorage.position === 'for' ? <ForView /> : null}
+              { localStorage.position === 'against' ? <AgainstView /> : null}
+              { localStorage.position ? null : <ChatView />}
+            </div>
         </div>
-          <div className="row">
-            <Position position="For" arguments={this.state.argumentsFor} points={this.state.votesFor} setToken={this.setToken.bind(this, 'for')} showJoinButton={this.state.showJoinButton} />
-            <Position position="Against" arguments={this.state.argumentsAgainst} points={this.state.votesAgainst} setToken={this.setToken.bind(this, 'against')} showJoinButton={this.state.showJoinButton} />
-          </div>
-          <div className="row">
-            { localStorage.position === 'for' ? <ForView /> : null}
-            { localStorage.position === 'against' ? <AgainstView /> : null}
-            { localStorage.position ? null : <ChatView />}
-          </div>
-      </div>
       )
+    }
+    else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
-  export default DebateFloor;
+
+export default DebateFloor;

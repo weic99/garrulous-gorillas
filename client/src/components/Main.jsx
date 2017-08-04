@@ -38,16 +38,25 @@ class Main extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-      <h4>List of Debates</h4>
-      { this.state.debates.map( (debate, i) => <DebateItem debate={debate} key={i} debateSelectHandler={this.props.debateSelectHandler} /> ) }
-      <Switch>
-      { this.state.debates.map( (debate, i) => 
-        <Route path={`/${debate.topic.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase()}`} component={DebateFloor} key={i} /> ) }
-      </Switch>
-      </div>
-    )
+    const debateIsSelected = this.props.debateIsSelected;
+
+    if (!debateIsSelected) {
+      return (
+        <div>
+        <h4>List of Debates</h4>
+        { this.state.debates.map( (debate, i) => <DebateItem debate={debate} key={i} debateSelectHandler={this.props.debateSelectHandler} /> ) }
+        <Switch>
+        { this.state.debates.map( (debate, i) => 
+          <Route path={`debates/${debate.topic.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase()}`} component={DebateFloor} key={i} /> ) }
+        </Switch>
+        </div>
+      )
+
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 
 }

@@ -19,15 +19,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentDebateSelected: {}
+      currentDebateSelected: {},
+      debateIsSelected: false
     }
 
     this.debateSelectHandler = (debateSelected) => {
       // When a debate is clicked, App will be notified and get the current debate data
-      console.log('[App] DebateSELECT fired', debateSelected);
+      console.log('[App] debateSelectHandler fired -->', debateSelected);
 
-      // Save current debate in state
+      // Save current debate/status in state
       this.setState({currentDebateSelected: debateSelected});
+      this.setState({debateIsSelected: true});
     }
 
     this.debateSelectHandler.bind(this);
@@ -40,16 +42,19 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <Nav />
         <h1 >Garrulous - Where Walter Is King</h1>
         <Switch>
-          <Route path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler}/> }/>
-          <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler}/> }/>
-          <Route path="/debatesample" component={ () => <DebateFloor /> }/>
-          <Route path="/login" component={ () => <Login /> }/>
-          <Route path="/signup" component={ () => <SignUp /> }/>
+          <Route exact path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
+          <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
+          <Route path="/debatesample" component={ () => <DebateFloor currentDebate={this.state.currentDebate}/> }/>
+          <Route path="/login" component={Login}/>
+          <Route path="/signup" component={SignUp}/>
+
+          <DebateFloor currentDebate={this.state.currentDebate} debateIsSelected={this.state.debateIsSelected}/>
         </Switch>
       </div>)
   }
