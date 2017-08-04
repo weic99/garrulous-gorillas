@@ -12,7 +12,7 @@ import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
 import SignUp from './components/signup/signup.jsx';
-
+import Landing from './components/Landing.jsx';
 
 
 class App extends React.Component {
@@ -48,13 +48,11 @@ class App extends React.Component {
         <Nav />
 
         <Switch>
-          <Route exact path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
-          <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
-          <Route path="/debatesample" component={ () => <DebateFloor currentDebate={this.state.currentDebate} debateIsSelected={this.state.debateIsSelected}/> }/>
-          <Route path="/login" component={Login}/>
-          <Route path="/signup" component={SignUp}/>
-
-          <DebateFloor currentDebateSelected={this.state.currentDebateSelected} debateIsSelected={this.state.debateIsSelected}/>
+          <Route exact path="/" component={Landing}/>
+          <Route exact path="/debates" component={ () => <Main debateSelectHandler={this.debateSelectHandler} debateIsSelected={this.debateIsSelected} currentDebate={this.state.currentDebate}/> }/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/signup" component={SignUp}/>
+          <Route path="/debates" component= { ()=> <DebateFloor currentDebateSelected={this.state.currentDebateSelected} debateIsSelected={this.state.debateIsSelected}/> } />
         </Switch>
       </div>)
   }
