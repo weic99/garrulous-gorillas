@@ -5,8 +5,7 @@ import axios from 'axios';
 import ChatView from '../chatview/chatview.jsx';
 import ForView from '../chatview/forview.jsx';
 import AgainstView from '../chatview/againstview.jsx';
-// import ChatView from '../chatview/chatview.jsx';
-// import ChatView from '../chatview/chatview.jsx';
+import Chatview from '../chatview/chatview.jsx';
 
 class DebateFloor extends React.Component {
   constructor(props) {

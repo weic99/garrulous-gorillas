@@ -12,15 +12,25 @@ import Main from './components/Main.jsx';
 import DebateFloor from './components/debate/DebateFloor.jsx';
 import Login from './components/login/login.jsx';
 import SignUp from './components/signup/signup.jsx';
-import Chatview from './components/chatview/chatview.jsx';
-import Forview from './components/chatview/forview.jsx';
-import Againstview from './components/chatview/againstview.jsx';
+
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
+      currentDebateSelected: {}
     }
+
+    this.debateSelectHandler = (debateSelected) => {
+      // When a debate is clicked, App will be notified and get the current debate data
+      console.log('[App] DebateSELECT fired', debateSelected);
+
+      // Save current debate in state
+      this.setState({currentDebateSelected: debateSelected});
+    }
+
+    this.debateSelectHandler.bind(this);
   }
 
   componentDidMount() {
@@ -35,21 +45,12 @@ class App extends React.Component {
         <Nav />
         <h1 >Garrulous - Where Walter Is King</h1>
         <Switch>
-          <Route path="/login" component={Login}/>
-          <Route path="/signup" component={SignUp}/>
-          <Route path="/Home" component={Main}/>
-          <Route path="/debatesample" component={DebateFloor}/>
-          <div>Chat Goes Here</div>          
-          <h1>Spectators</h1>
-          <Chatview />
-          
-          <h1>For</h1>
-          <Forview />
-          
-          <h1>Against</h1>
-          <Againstview />
+          <Route path="/" component={ () => <Main debateSelectHandler={this.debateSelectHandler}/> }/>
+          <Route path="/home" component={ () => <Main debateSelectHandler={this.debateSelectHandler}/> }/>
+          <Route path="/debatesample" component={ () => <DebateFloor /> }/>
+          <Route path="/login" component={ () => <Login /> }/>
+          <Route path="/signup" component={ () => <SignUp /> }/>
         </Switch>
-
       </div>)
   }
 }
