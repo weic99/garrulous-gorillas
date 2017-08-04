@@ -54,7 +54,7 @@ class App extends React.Component {
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={SignUp}/>
 
-          <DebateFloor currentDebate={this.state.currentDebate} debateIsSelected={this.state.debateIsSelected}/>
+          <DebateFloor currentDebateSelected={this.state.currentDebateSelected} debateIsSelected={this.state.debateIsSelected}/>
         </Switch>
       </div>)
   }

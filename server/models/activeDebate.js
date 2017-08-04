@@ -52,6 +52,11 @@ module.exports.addPoint = (topic, side, numOfPoints, callback) => {
 };
 
 // Get number of votes for an argument
-module.exports.getVotesByTopic = (topic, callback) => {
+module.exports.getPointsByTopic = (topic, callback) => {
   ActiveDebate.findOne({topic: topic}, callback);
 };
+
+
+
+
+

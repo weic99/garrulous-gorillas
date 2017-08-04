@@ -47,6 +47,8 @@ router.get('/api/get', (req, res) => {
 
 router.post('/api/postArg', (req, res) => {
 
+  console.log('new arg posted', req.body)
+
   const newArgument = new DebateArg({
     body: req.body.argumentBody,
     votes: 0,
@@ -117,6 +119,28 @@ router.put('/api/addPtToDebateSide', (req, res) => {
     } 
   });
 });
+
+
+// Get all points for a topic
+router.get('/api/getPoints', (req, res) => {
+  console.log('[getPoints]');
+  let topic = req.query.topic;
+
+  ActiveDebate.getPointsByTopic(topic, (err, data) => {
+    if (err) {
+      res.json({
+        success: false
+      });
+    } else if (data) {
+      console.log('GOT ALL THE POINTS', data);
+      res.json({
+        success: true,
+        data: data
+      });
+    } 
+  });
+});
+
 
 router.put('/api/addVoteToArgument', (req, res) => {
   // Currently this is set to querying by body (not by id)
