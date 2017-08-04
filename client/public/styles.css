@@ -66,5 +66,18 @@ ul {
   list-style-type: none;
 }
 
+.landing {
+    text-align: center;
+}
 
+.landing .row {
+    margin-top: 80px;
+}
 
+.landing img {
+    position: absolute;
+    z-index: -1;
+    border-radius: 5px;
+    width:auto;
+    height:auto;
+}
