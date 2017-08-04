@@ -30,12 +30,16 @@ class Argument extends React.Component {
   }
 
   render() {
+    let buttonTemplate = null;
+    if (localStorage.position === this.props.position.toLowerCase() || !localStorage.position) {
+      buttonTemplate = <Button onClick={this.handleVote}>
+            {this.state.status}
+          </Button>
+    }
     return(
       <div>
-        <form>
-          <Button onClick={this.handleVote}>
-            {this.state.status}
-          </Button>{this.props.argument}
+        <form>{buttonTemplate}
+          {this.props.argument}
         </form>
       </div>
       )

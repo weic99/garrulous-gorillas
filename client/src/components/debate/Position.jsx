@@ -166,7 +166,7 @@ class Position extends React.Component {
           <div><h4>{this.state.points} Points</h4></div>
         {this.props.showJoinButton ? <Button onClick={this.props.setToken} bsStyle="success">Join</Button> : null}
         
-        {this.state.arguments.map( (argument, index) => <Argument handleVote={this.handleVote} argument={argument} />)}
+        {this.state.arguments.map( (argument, index) => <Argument position= {this.props.position} handleVote={this.handleVote} argument={argument} />)}
       </div>
     )
   }
