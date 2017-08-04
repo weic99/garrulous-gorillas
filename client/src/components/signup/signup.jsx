@@ -30,7 +30,20 @@ class SignUp extends React.Component {
         ReactDOM.findDOMNode(this.refs.password).value = '';
         this.setState({ errorMessage: '' });
         this.setState({ errorMessage: response.data.msg });
-        this.setState({ redirect: true});
+        
+        axios.post('http://localhost:3000/users/login', creds)
+        .then(response => {
+          localStorage.clear();
+          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('username', response.data.username);
+          localStorage.setItem('user_id', response.data.user_id);
+          this.setState({ errorMessage: response.data.msg });
+          this.setState({ redirect: true});
+        })
+        .catch(error => {
+          console.log('[Login] ERROR:', error);
+          this.setState({ errorMessage: error.response.data.msg });
+        });
       })
       .catch(error => {
         console.log('[Signup] ERROR:', error);
@@ -41,7 +54,7 @@ class SignUp extends React.Component {
   
   render() {
     if (this.state.redirect) {
-      return <Redirect to='/login'/>;
+      return <Redirect to='/debates'/>;
     };
     return (
       <div>
