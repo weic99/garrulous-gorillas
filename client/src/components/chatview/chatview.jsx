@@ -26,13 +26,14 @@ export default class Chatview extends React.Component {
     
     // Listen for chats
     socket.on('chat', (data) => {
-      const output = ReactDOM.findDOMNode(this.refs.output);
+      const output = ReactDOM.findDOMNode(this.refs.outputSpectator);
+      console.log(output);
       output.innerHTML += `<p><strong>${data.username}:</strong>${data.message}</p>`;
       output.lastChild.scrollIntoView();
     });
   }
 
- render () {
+ render() {
   return (
       <div className="container">
         <div className="row">
@@ -48,7 +49,7 @@ export default class Chatview extends React.Component {
                     </div>
                     <div className="panel-collapse collapse in" id="collapse1">
                       <div className="panel-body">
-                        <div id="chat-window-output" ref="output"></div>
+                        <div id="chat-window-output" ref="outputSpectator"></div>
                       </div>
                       <ul className="pages">
                         <li className="chat page">

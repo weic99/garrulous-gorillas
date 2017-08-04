@@ -19,7 +19,8 @@ export default class Againstview extends React.Component {
       // console.log('message', message);
       socket.emit('chat', {
         username: username,
-        message: message
+        message: message,
+        side: 'against'
       });
     };
     
@@ -30,29 +31,50 @@ export default class Againstview extends React.Component {
       output.lastChild.scrollIntoView();
     });
   }
-
- render () {
-  return (
-      <div>
-        <div id="chat-window">
-          <div id="chat-window-output" ref="output"></div>
-        </div>
-        <ul className="pages">
-          <li className="chat page">
-            <div className="chatArea">
-              <ul className="messages"></ul>
-            </div>
-            <input className="inputMessage" ref="message" placeholder="Type here..."/>
-          </li>
-          <li className="login page">
-            <div className="form">
-              <h3 className="title">What's your nickname?</h3>
-              <input className="usernameInput" ref="username" type="text" maxLength="14" />
-            </div>
-          </li>
-          <Button onClick={(event) => this.handleSubmit(event)}>Submit</Button>
-        </ul>
-      </div>  
-      )
-   }
-}
+   render () {
+    return (
+        <div className="container">
+          <div className="row">
+              <div className="col-md-5">
+                  <div className="panel panel-primary">
+                      <div className="panel-heading" id="accordion">
+                          <span className="glyphicon glyphicon-comment"></span> Against
+                            <div className="btn-group pull-right">
+                              <a type="button" className="btn btn-default btn-xs" data-toggle="collapse" href="#collapse1">
+                                  <span className="glyphicon glyphicon-chevron-down"></span>
+                              </a>
+                            </div>
+                      </div>
+                      <div className="panel-collapse collapse in" id="collapse1">
+                        <div className="panel-body">
+                          <div id="chat-window-output" ref="output"></div>
+                        </div>
+                        <ul className="pages">
+                          <li className="chat page">
+                            <div className="chatArea">
+                              <ul className="messages"></ul>
+                            </div>
+                          </li>
+                          <li className="login page">
+                            <div className="form">
+                              <h3 className="title">What's your nickname?</h3>
+                              <input className="usernameInput" ref="username" type="text" maxLength="14" />
+                            </div>
+                          </li>
+                        </ul>
+                        <div className="panel-footer">
+                          <div className="input-group">
+                              <input id="btn-input" type="text" className="inputMessage form-control input-sm" ref="message" placeholder="Type your message here..." />
+                              <span className="input-group-btn">
+                                  <button className="btn btn-warning btn-sm" id="btn-chat" onClick={(event) => this.handleSubmit(event)}>Send</button>
+                              </span>
+                          </div>
+                        </div> 
+                      </div> 
+                  </div>
+              </div>      
+          </div>
+        </div>     
+        )
+     }
+  }

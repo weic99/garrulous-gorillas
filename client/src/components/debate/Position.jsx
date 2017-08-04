@@ -4,7 +4,8 @@ import Argument from './Argument.jsx';
 import {Button} from 'react-bootstrap'
 import axios from 'axios';
 import {sortArgsByVote} from '../../utils.js'
-const socket = require('socket.io-client')('http://localhost:3000/spectator');
+
+
 
 
 class Position extends React.Component {
@@ -14,6 +15,8 @@ class Position extends React.Component {
       arguments: [],
       points: this.props.points
     }
+
+    const socket = require('socket.io-client')(`http://localhost:3000/${this.props.position.toLowerCase()}`)
 
     socket.on('chat', (data) => {
 
@@ -29,7 +32,6 @@ class Position extends React.Component {
         console.log('#agree called')
       }  
     });
-    this.setToken = this.setToken.bind(this);
     this.addArguments = this.addArguments.bind(this);
     this.handleVote = this.handleVote.bind(this);
   }
@@ -77,20 +79,13 @@ class Position extends React.Component {
     console.log('added argument', this.state.arguments);
   }
 
-  setToken() {
-    if (this.props.position==='For') {
-      localStorage.setItem('position', 'for')
-    }  else {
-      localStorage.setItem('position', 'for')
-    }
-  }
-
   render() {
     return (
       <div className='col-sm-6'>
         <h4>{this.props.position}</h4>
         <div>{this.state.points} Points</div>
-        <Button onClick={this.setToken} bsStyle="success">Join</Button>
+        {this.props.showJoinButton ? <Button onClick={this.props.setToken} bsStyle="success">Join</Button> : null}
+        
         {this.state.arguments.map( (argument, index) => <Argument handleVote={this.handleVote} argument={argument} />)}
       </div>
     )
