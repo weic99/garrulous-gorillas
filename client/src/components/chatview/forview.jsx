@@ -24,12 +24,8 @@ export default class Forview extends React.Component {
         position: 'for'
       });
     };
-    
     // Listen for chats
     socket.on('chat', (data) => {
-      // Create a button that when pressed, adds a point to the DB for this specific position
-      // If data has #arg or some other keyword
-        // then render the element with a the button
       const output = ReactDOM.findDOMNode(this.refs.outputFor);
       output.innerHTML += `<p><strong>${data.username}:</strong>${data.message}</p>`;
       output.lastChild.scrollIntoView();
@@ -70,11 +66,11 @@ export default class Forview extends React.Component {
                       </ul>
                       <div className="panel-footer">
                         <div className="input-group">
-                           <input id="btn-input" type="text" className="inputMessage form-control input-sm" ref="message" placeholder="Type your message here..." />
-                           <span className="input-group-btn">
-                           <button className="btn btn-warning btn-sm" id="btn-chat" onClick={(event) => this.handleSubmit(event)}>Send</button>
-                           </span>
-                        </div> 
+                            <input onSubmit={(event) => this.handleSubmit(event)} id="btn-input" type="text" className="inputMessage form-control input-sm" ref="message" placeholder="Type your message here..." />
+                            <span className="input-group-btn">
+                                <input type="submit" className="btn btn-warning btn-sm" id="btn-chat" onClick={(event) => this.handleSubmit(event)} value="send" />
+                            </span>
+                        </div>
                       </div> 
                     </div> 
                 </div>
