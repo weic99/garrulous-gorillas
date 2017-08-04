@@ -6,7 +6,7 @@ import {
 const DebateItem = (props) => {
 
   return (
-    <li>
+    <li className="debate-item-style">
     	<Link to={`debates/${props.debate.topic.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase()}`} onClick={()=>props.debateSelectHandler(props.debate)}>
       {props.debate.topic }
     	</Link>
